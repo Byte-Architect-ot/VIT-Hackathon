@@ -1,0 +1,29 @@
+{
+  "name": "satyabot-telegram",
+  "version": "1.0.0",
+  "description": "SatyaBot - AI-powered fact-checking Telegram bot for India",
+  "main": "telegram-bot.js",
+  "scripts": {
+    "start": "node telegram-bot.js",
+    "dev": "nodemon telegram-bot.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "fact-check",
+    "ai",
+    "gemini"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "axios": "^1.15.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
