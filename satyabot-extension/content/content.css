@@ -1,0 +1,125 @@
+/* SatyaBot Extension Styles */
+
+/* Badge Styles */
+.satyabot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 8px 0;
+  position: relative;
+  cursor: help;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.satyabot-badge.satyabot-fake {
+  background: #fee;
+  color: #c00;
+  border: 1px solid #faa;
+}
+
+.satyabot-badge.satyabot-true {
+  background: #efe;
+  color: #0a0;
+  border: 1px solid #afa;
+}
+
+.satyabot-badge.satyabot-unverified {
+  background: #ffc;
+  color: #a80;
+  border: 1px solid #ffa;
+}
+
+/* Tooltip */
+.badge-tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10000;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.satyabot-badge:hover .badge-tooltip {
+  display: block;
+}
+
+.badge-tooltip strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.badge-tooltip p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.badge-tooltip small {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Inline Badge (for headlines) */
+.satyabot-inline-badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: help;
+}
+
+/* WhatsApp Warning */
+.satyabot-warning {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.warning-header {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #856404;
+}
+
+.satyabot-warning p {
+  font-size: 13px;
+  color: #856404;
+  margin-bottom: 8px;
+}
+
+.warning-btn {
+  background: #ffc107;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #856404;
+}
+
+.warning-btn:hover {
+  background: #e0a800;
+}
+
+/* Highlight for suspicious content */
+.satyabot-suspicious {
+  background: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid #f00;
+  padding-left: 10px;
+}

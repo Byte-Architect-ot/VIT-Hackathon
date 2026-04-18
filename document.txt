@@ -1,0 +1,39 @@
+# SatyaBot Setup & Execution Guide
+
+### 1. Prerequisites
+- Node.js (v18+)
+- MongoDB (Running on localhost:27017)
+- Redis (Running on localhost:6379)
+
+### 2. Quick Setup
+Open your terminal in the `satyabot-backend` directory and run:
+```bash
+# Install dependencies
+npm install
+
+# Import and Analyze the Dataset (Required for the main server)
+npm run import:dataset
+npm run analyze:dataset
+```
+
+### 3. Running the Project
+
+#### Option A: Run the Full Production Server (Port 5000)
+Includes modular architecture, news API integration, and caching.
+```bash
+npm start
+```
+- Health Check: http://localhost:5000/health
+
+#### Option B: Run the Gemini Bot Server (Port 5001)
+Lightweight implementation specifically for Twilio/WhatsApp using Google Gemini.
+```bash
+node gemini-server.js
+```
+- Webhook URL: http://localhost:5001/webhook
+
+### 4. Configuration
+Ensure your `.env` file in `satyabot-backend/` has the following keys:
+- `GEMINI_API_KEY`: For the Gemini Bot (Option B)
+- `GROQ_API_KEY`: For the Main Server (Option A)
+- `NEWS_API_KEY`: For real-time news verification

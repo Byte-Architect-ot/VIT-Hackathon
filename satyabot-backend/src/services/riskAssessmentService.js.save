@@ -1,0 +1,228 @@
+const logger = require('../utils/logger');
+
+/**
+ * Risk Assessment Service
+ * Pre-filters messages to determine if they need AI verification
+ */
+class RiskAssessmentService {
+  constructor() {
+    // High-risk keywords specific to Indian misinformation
+    this.highRiskKeywords = {
+      // Crisis/Emergency Keywords
+      crisis: [
+        'curfew', 'lockdown', 'riot', 'riots', 'violence', 'attack', 'terrorist',
+        'bomb', 'blast', 'emergency', 'alert', 'warning', 'danger', 'evacuation',
+        'कर्फ्यू', 'दंगा', 'हिंसा', 'हमला', 'आतंकवाद', 'बम', 'धमाका'
+      ],
+      
+      // Health/Medical Misinformation
+      health: [
+        'poison', 'poisoned', 'contaminated', 'disease', 'virus', 'vaccine',
+        'cure', 'corona', 'covid', 'died', 'death toll', 'infected',
+        'जहर', 'बीमारी', 'वायरस', 'टीका', 'मौत', 'संक्रमित'
+      ],
+      
+      // Financial Scams
+      financial: [
+        'free recharge', 'lottery', 'won', 'prize', 'account blocked',
+        'otp', 'atm', 'credit card', 'bank holiday', 'refund',
+        'फ्री रिचार्ज', 'लॉटरी', 'जीत', 'इनाम', 'खाता बंद', 'बैंक'
+      ],
+      
+      // Social Engineering
+      manipulation: [
+        'forward', 'share', 'forward to', 'share to 10', 'urgent', 'immediately',
+        'before', 'last day', 'expires', 'limited time', 'whatsapp will',
+        'फॉरवर्ड', 'शेयर', 'जल्दी', 'तुरंत', 'आखिरी दिन'
+      ],
+      
+      // Political Misinformation
+      political: [
+        'unesco', 'world bank', 'govt announced', 'pm said', 'cm declared',
+        'supreme court', 'election', 'voting', 'ballot',
+        'सरकार ने', 'पीएम ने', 'चुनाव', 'मतदान'
+      ],
+      
+      // Kidnapping/Crime Rumors
+      crime: [
+        'kidnap', 'kidnapper', 'child lifter', 'organ', 'gang', 'robber',
+        'theft', 'cctv', 'missing', 'abducted',
+        'अपहरण', 'बच्चा चोर', 'गिरोह', 'चोरी', 'लापता'
+      ],
+      
+      // Religious/Communal
+      communal: [
+        'hindu', 'muslim', 'christian', 'temple', 'mosque', 'church',
+        'jihad', 'cow', 'beef', 'convert', 'love jihad',
+        'हिंदू', 'मुस्लिम', 'मंदिर', 'मस्जिद', 'गौ', 'धर्म परिवर्तन'
+      ]
+    };
+
+    // Viral phrases that indicate forwarded misinformation
+    this.viralPhrases = [
+      'forward this message',
+      'share with everyone',
+      'send to all groups',
+      'breaking news',
+      'confirmed news',
+      'official announcement',
+      'this is true',
+      'verified information',
+      'my friend who works in',
+      'insider information',
+      'यह मैसेज सबको भेजो',
+      'ब्रेकिंग न्यूज़',
+      'सच्ची खबर',
+      'आधिकारिक घोषणा'
+    ];
+
+    // Trusted source indicators (LOWER risk)
+    this.trustedIndicators = [
+      'pib.gov.in',
+      'pmindia.gov.in',
+      'mha.gov.in',
+      '@pibfactcheck',
+      'thehindu.com',
+      'indianexpress.com',
+      'ndtv.com',
+      'reuters.com'
+    ];
+  }
+
+  /**
+   * Calculate risk score for a message (0-100)
+   */
+  assessRisk(text, metadata = {}) {
+    let riskScore = 0;
+    const details = {
+      triggers: [],
+      category: 'low_risk',
+      requiresVerification: false
+    };
+
+    const textLower = text.toLowerCase();
+
+    // 1. Check for high-risk keywords (40 points max)
+    let keywordMatches = 0;
+    for (const [category, keywords] of Object.entries(this.highRiskKeywords)) {
+      const matches = keywords.filter(kw => textLower.includes(kw.toLowerCase()));
+      
+      if (matches.length > 0) {
+        keywordMatches += matches.length;
+        details.triggers.push({
+          type: 'keyword',
+          category: category,
+          matches: matches
+        });
+      }
+    }
+    
+    riskScore += Math.min(keywordMatches * 10, 40);
+
+    // 2. Check for viral phrases (30 points max)
+    const viralMatches = this.viralPhrases.filter(phrase => 
+      textLower.includes(phrase.toLowerCase())
+    );
+    
+    if (viralMatches.length > 0) {
+      riskScore += Math.min(viralMatches.length * 15, 30);
+      details.triggers.push({
+        type: 'viral_phrase',
+        matches: viralMatches
+      });
+    }
+
+    // 3. Check message characteristics
+    const textLength = text.length;
+    const hasExclamations = (text.match(/!/g) || []).length;
+    const hasAllCaps = text.split(' ').filter(word => 
+      word.length > 3 && word === word.toUpperCase()
+    ).length;
+
+    // Long messages with urgency indicators
+    if (textLength > 200 && hasExclamations > 3) {
+      riskScore += 10;
+      details.triggers.push({ type: 'urgency_indicators' });
+    }
+
+    // Excessive caps lock (shouting)
+    if (hasAllCaps > 5) {
+      riskScore += 10;
+      details.triggers.push({ type: 'excessive_caps' });
+    }
+
+    // 4. Check for forwarded message indicator (WhatsApp)
+    if (metadata.isForwarded) {
+      riskScore += 15;
+      details.triggers.push({ type: 'forwarded_message' });
+    }
+
+    // 5. Check for trusted sources (REDUCE risk)
+    const hasTrustedSource = this.trustedIndicators.some(indicator => 
+      textLower.includes(indicator.toLowerCase())
+    );
+    
+    if (hasTrustedSource) {
+      riskScore = Math.max(0, riskScore - 30);
+      details.trustedSourceFound = true;
+    }
+
+    // 6. Determine category and verification requirement
+    if (riskScore >= 60) {
+      details.category = 'high_risk';
+      details.requiresVerification = true;
+    } else if (riskScore >= 30) {
+      details.category = 'medium_risk';
+      details.requiresVerification = true;
+    } else if (riskScore >= 15) {
+      details.category = 'low_risk';
+      details.requiresVerification = false;
+    } else {
+      details.category = 'safe';
+      details.requiresVerification = false;
+    }
+
+    logger.info(`Risk Assessment: ${riskScore}/100 (${details.category})`);
+
+    return {
+      riskScore: Math.min(riskScore, 100),
+      ...details
+    };
+  }
+
+  /**
+   * Quick check: Should this message be verified?
+   */
+  shouldVerify(text, metadata = {}) {
+    // Don't verify very short messages
+    if (text.length < 20) return false;
+
+    // Don't verify casual greetings
+    const casualPhrases = [
+      'good morning', 'good night', 'happy birthday', 'congratulations',
+      'thanks', 'thank you', 'ok', 'okay', 'yes', 'no', 'haha', 'lol'
+    ];
+    
+    const textLower = text.toLowerCase().trim();
+    if (casualPhrases.some(phrase => textLower === phrase)) {
+      return false;
+    }
+
+    // Assess risk
+    const assessment = this.assessRisk(text, metadata);
+    return assessment.requiresVerification;
+  }
+
+  /**
+   * Get trending risk keywords (for admin dashboard)
+   */
+  getTrendingRiskKeywords() {
+    // Flatten all keywords
+    const allKeywords = Object.values(this.highRiskKeywords).flat();
+    return allKeywords.slice(0, 50); // Top 50
+  }
+}
+
+module.exports = new RiskAssessmentService();
+
+

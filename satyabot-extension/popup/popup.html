@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SatyaBot - Premium Fact Checker</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7V12C3 16.97 6.84 21.36 12 23C17.16 21.36 21 16.97 21 12V7L12 2Z" fill="url(#paint0_linear)"/>
+          <path d="M12 2L3 7V12C3 16.97 6.84 21.36 12 23" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10.4996 16.5L6.49963 12.5L7.90963 11.09L10.4996 13.67L16.0896 8.08002L17.4996 9.50002L10.4996 16.5Z" fill="white"/>
+          <defs>
+            <linearGradient id="paint0_linear" x1="12" y1="2" x2="12" y2="23" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4F46E5"/>
+              <stop offset="1" stop-color="#7C3AED"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1>SatyaBot</h1>
+      <p class="subtitle">AI Fact-Checking Engine</p>
+    </header>
+
+    <div class="input-section">
+      <textarea id="claimInput" placeholder="Paste a claim here to analyze..."></textarea>
+      <button id="verifyBtn" class="btn-primary">
+        <span class="btn-text">Verify Claim</span>
+        <svg class="icon-scan" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+      </button>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorContainer" class="glass-panel error-panel" style="display: none;">
+      <div class="error-msg"></div>
+    </div>
+
+    <!-- Result State -->
+    <div id="resultContainer" class="result-container" style="display: none;">
+      <div class="status-banner">
+        <h2 id="statusLabel">UNVERIFIED</h2>
+        <div class="confidence-display">
+          <span class="confidence-value" id="credScore">0</span><span class="confidence-pct">%</span>
+          <span class="confidence-label">Confidence</span>
+        </div>
+      </div>
+
+      <div class="explanation-card glass-panel">
+        <div class="explanation-tabs">
+          <button class="tab-btn active" data-lang="en">English</button>
+          <button class="tab-btn" data-lang="hi">हिंदी</button>
+        </div>
+        <p id="explanationText" class="explanation-text"></p>
+        <div class="action-alert" id="suggestedAction"></div>
+      </div>
+
+      <div class="sources-section">
+        <h3>Analysis Sources <span id="sourceCount" class="badge">0</span></h3>
+        <div id="sourcesList" class="sources-list">
+          <!-- Sources injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../utils/api.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
