@@ -11,8 +11,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (info.menuItemId === "satyabot-verify") {
     const selectedText = info.selectionText;
-    
-    chrome.notifications.create("satyabot-loading", {
+
+        chrome.notifications.create("satyabot-loading", {
       type: "basic",
       iconUrl: "assets/icon48.png", 
       title: "SatyaBot Verifying...",
@@ -24,14 +24,14 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       const status = data.status || "UNVERIFIED";
       const explanation = data.explanation_english || data.explanation || "No explanation provided.";
       const score = data.credibility_score || 0;
-      
-      let emoji = "🟡";
-      if (status === "TRUE") emoji = "🟢";
-      else if (status === "FAKE") emoji = "🔴";
+
+            let emoji = "";
+      if (status === "TRUE") emoji = "";
+      else if (status === "FAKE") emoji = "";
 
       chrome.notifications.clear("satyabot-loading");
-      
-      chrome.notifications.create({
+
+            chrome.notifications.create({
         type: "basic",
         iconUrl: "assets/icon48.png", 
         title: `${emoji} SatyaBot: ${status} (Score: ${score})`,

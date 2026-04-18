@@ -4,8 +4,8 @@ const logger = require('../utils/logger');
 class DatasetService {
     async searchSimilarClaims(claimText, limit = 5) {
     try {
-      
-      const results = await FactCheckRecord.find(
+
+            const results = await FactCheckRecord.find(
         { 
           $text: { $search: claimText },
           trustScore: { $gte: 75 }
@@ -16,8 +16,8 @@ class DatasetService {
       )
       .sort({ score: { $meta: 'textScore' } })
       .limit(limit);
-      
-      return results;
+
+            return results;
     } catch (error) {
       logger.error('Dataset search error:', error.message);
       return [];
@@ -33,8 +33,8 @@ class DatasetService {
     async getDatasetStats() {
     const [total, byLabel, bySource, byRegion] = await Promise.all([
       FactCheckRecord.countDocuments(),
-      
-      FactCheckRecord.aggregate([
+
+            FactCheckRecord.aggregate([
         {
           $group: {
             _id: '$label',
@@ -42,8 +42,8 @@ class DatasetService {
           }
         }
       ]),
-      
-      FactCheckRecord.aggregate([
+
+            FactCheckRecord.aggregate([
         {
           $group: {
             _id: '$factCheckSource',
@@ -53,8 +53,8 @@ class DatasetService {
         { $sort: { count: -1 } },
         { $limit: 5 }
       ]),
-      
-      FactCheckRecord.aggregate([
+
+            FactCheckRecord.aggregate([
         {
           $group: {
             _id: '$region',
@@ -65,8 +65,8 @@ class DatasetService {
         { $limit: 10 }
       ])
     ]);
-    
-    return {
+
+        return {
       total,
       byLabel,
       bySource,

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const factCheckRecordSchema = new mongoose.Schema({
-  
-  originalId: {
+
+    originalId: {
     type: String,
     required: true,
     unique: true,
@@ -18,24 +18,24 @@ const factCheckRecordSchema = new mongoose.Schema({
     enum: ['IFCN', 'Independent', 'News Organization', 'Government'],
     default: 'Independent'
   },
-  
-  statement: {
+
+    statement: {
     type: String,
     required: true
   },
   statementEnglish: String,
-  
-  newsBody: String,
+
+    newsBody: String,
   newsBodyEnglish: String,
-  
-  mediaLink: String,
+
+    mediaLink: String,
   publishDate: Date,
   factCheckLink: {
     type: String,
     required: true
   },
-  
-  newsCategory: {
+
+    newsCategory: {
     type: String,
     index: true
   },
@@ -51,21 +51,21 @@ const factCheckRecordSchema = new mongoose.Schema({
     type: String,
     enum: ['Twitter', 'Facebook', 'WhatsApp', 'Instagram', 'YouTube', 'Other']
   },
-  
-  contentType: {
+
+    contentType: {
     text: { type: Boolean, default: false },
     video: { type: Boolean, default: false },
     image: { type: Boolean, default: false }
   },
-  
-  label: {
+
+    label: {
     type: String,
     enum: ['FALSE', 'TRUE', 'MISLEADING', 'UNVERIFIED', 'SATIRE'],
     required: true,
     index: true
   },
-  
-  claimHash: {
+
+    claimHash: {
     type: String,
     index: true
   },
@@ -75,14 +75,14 @@ const factCheckRecordSchema = new mongoose.Schema({
     min: 0,
     max: 100
   },
-  
-  usedInVerification: {
+
+    usedInVerification: {
     type: Number,
     default: 0
   },
   lastUsed: Date,
-  
-  importedAt: {
+
+    importedAt: {
     type: Date,
     default: Date.now
   },

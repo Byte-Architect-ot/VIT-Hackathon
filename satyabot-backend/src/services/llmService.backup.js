@@ -7,11 +7,9 @@ class LLMService {
     this.provider = process.env.LLM_PROVIDER || 'openai';
     this.apiKey = process.env.OPENAI_API_KEY || process.env.GROQ_API_KEY;
     this.model = process.env.LLM_MODEL || 'gpt-4-turbo-preview';
-    
-    // Auto-detect Groq based on key prefix
+
     if (this.apiKey && this.apiKey.startsWith('gsk_')) {
       this.provider = 'groq';
-      // Fallback to a Groq model if the user left a GPT model in env
       if (this.model.startsWith('gpt')) {
         this.model = 'llama-3.3-70b-versatile';
       }
@@ -32,8 +30,8 @@ Only return the extracted claim, nothing else.`;
       return response.trim();
     } catch (error) {
       logger.error('LLM Claim Extraction Error:', error.message);
-      
-      return userText.substring(0, 100);
+
+            return userText.substring(0, 100);
     }
   }
 
@@ -64,15 +62,14 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
 
     try {
       const response = await this._callLLM(systemPrompt, userPrompt, LLM.MAX_TOKENS);
-      
-      const cleanedResponse = response.replace(/```json\n?|\n?```/g, '').trim();
+
+            const cleanedResponse = response.replace(/```json\n?|\n?```/g, '').trim();
       const parsed = JSON.parse(cleanedResponse);
-      
-      return parsed;
+
+            return parsed;
     } catch (error) {
       logger.error('LLM Verification Error:', error.message);
-      
-      // Fallback response
+
       return {
         status: 'UNVERIFIED',
         confidence_score: 0,
@@ -108,8 +105,8 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
 
       return response.data.choices[0].message.content;
     }
-    
-    if (this.provider === 'groq') {
+
+        if (this.provider === 'groq') {
       const response = await axios.post(
         'https://api.groq.com/openai/v1/chat/completions',
         {
@@ -132,8 +129,8 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
 
       return response.data.choices[0].message.content;
     }
-    
-    throw new Error(`LLM provider not properly configured: ${this.provider}`);
+
+        throw new Error(`LLM provider not properly configured: ${this.provider}`);
   }
 }
 

@@ -30,8 +30,8 @@ const claimSchema = new mongoose.Schema({
   explanationEnglish: String,
   explanationHindi: String,
   suggestedAction: String,
-  
-  queryCount: {
+
+    queryCount: {
     type: Number,
     default: 1
   },
@@ -45,17 +45,17 @@ const claimSchema = new mongoose.Schema({
     url: String,
     publishedAt: Date
   }],
-  
-  clusterGroup: {
+
+    clusterGroup: {
     type: String,
     index: true
   },
-  
-  regions: [{
+
+    regions: [{
     type: String
   }],
-  
-  velocityScore: {
+
+    velocityScore: {
     type: Number,
     default: 0
   }
@@ -69,13 +69,13 @@ claimSchema.index({ createdAt: 1 }, { expireAfterSeconds: 604800 });
 claimSchema.methods.incrementQuery = async function() {
   this.queryCount += 1;
   this.lastQueried = new Date();
-  
-  const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
+
+    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
   if (this.lastQueried > tenMinutesAgo) {
     this.velocityScore += 1;
   }
-  
-  await this.save();
+
+    await this.save();
 };
 
 module.exports = mongoose.model('Claim', claimSchema);

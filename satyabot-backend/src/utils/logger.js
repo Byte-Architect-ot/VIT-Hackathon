@@ -12,30 +12,30 @@ const logger = winston.createLogger({
   ),
   defaultMeta: { service: 'satyabot' },
   transports: [
-    
-    new winston.transports.Console({
+
+        new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.printf(
           ({ level, message, timestamp, ...metadata }) => {
             let msg = `${timestamp} [${level}]: ${message}`;
-            
-            if (Object.keys(metadata).length > 0) {
+
+                        if (Object.keys(metadata).length > 0) {
               msg += ` ${JSON.stringify(metadata)}`;
             }
-            
-            return msg;
+
+                        return msg;
           }
         )
       )
     }),
-    
-    new winston.transports.File({ 
+
+        new winston.transports.File({ 
       filename: 'logs/error.log', 
       level: 'error' 
     }),
-    
-    new winston.transports.File({ 
+
+        new winston.transports.File({ 
       filename: 'logs/combined.log' 
     })
   ]

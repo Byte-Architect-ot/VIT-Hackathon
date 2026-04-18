@@ -3352,3 +3352,969 @@
 {"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 20:55:37"}
 {"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 20:55:37"}
 {"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 20:55:37"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":" MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":" Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 21:37:25"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:37:30"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":" MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":" Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 21:37:31"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:38:00"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":" MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":" Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 21:38:01"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":" MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":" Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 21:38:07"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":" MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":" Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":" SatyaBot server running on port 8001","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":" Environment: development","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":" Health Check: http://localhost:8001/health","service":"satyabot","timestamp":"2026-04-18 21:39:06"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:39:33"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:39:34"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:34"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:39:34"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:34"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:39:34"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:39:48"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:39:55"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:40:47"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:41:44"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 21:47:13"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:01:46"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:01:47"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:01:47"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:01:47"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:01:47"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:01:47"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:02:37"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:02:38"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:02:38"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:02:38"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:02:38"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:02:38"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:05:37"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:07:03"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:07:55"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:08:05"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:08:05"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:08:05"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:08:05"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:08:06"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:09:00"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:11:09"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:18:13"}
+{"level":"info","message":"HEAD /health","service":"satyabot","timestamp":"2026-04-18 22:18:50"}
+{"level":"info","message":"GET /health","service":"satyabot","timestamp":"2026-04-18 22:18:50"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-18 22:19:18"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:19:19"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"Processing claim: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"Cache MISS for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"Similar claim found: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"Using clustered result for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"Cache SET for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 22:19:42"}
+{"level":"info","message":"POST /webhook","service":"satyabot","timestamp":"2026-04-18 22:22:11"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:23:38"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 22:23:38"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:25:52"}
+{"level":"info","message":" Found verified match in dataset: BFNK_25195","service":"satyabot","timestamp":"2026-04-18 22:25:52"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-18 22:25:52"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"OCR request received, file size: 151411 bytes","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"OCR completed in 691ms, confidence: 67.00%","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"Extracted text length: 107 characters","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24080","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-18 22:26:48"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:34:11"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:34:12"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-18 22:39:56"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:39:57"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:39:58"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:43:02"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:43:07"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:45:13"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:45:20"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:45:57"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:46:19"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 22:46:19"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-18 22:46:39"}
+{"level":"info","message":"OCR request received, file size: 141660 bytes","service":"satyabot","timestamp":"2026-04-18 22:46:39"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-18 22:46:39"}
+{"level":"info","message":"OCR completed in 693ms, confidence: 67.00%","service":"satyabot","timestamp":"2026-04-18 22:46:40"}
+{"level":"info","message":"Extracted text length: 112 characters","service":"satyabot","timestamp":"2026-04-18 22:46:40"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:46:40"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24699","service":"satyabot","timestamp":"2026-04-18 22:46:40"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-18 22:46:40"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:47:07"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:47:08"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:49:50"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:49:51"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:51:05"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 22:51:05"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:55:15"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:55:16"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:58:26"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 22:58:26"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-18 22:58:40"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 22:58:41"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:59:04"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 22:59:04"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 22:59:46"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19434","service":"satyabot","timestamp":"2026-04-18 22:59:46"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:04:14"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:04:15"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:04:20"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:04:49"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:04:50"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:04:58"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:04:59"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 23:05:20"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19425","service":"satyabot","timestamp":"2026-04-18 23:05:20"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 23:06:30"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19434","service":"satyabot","timestamp":"2026-04-18 23:06:30"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 23:07:14"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-18 23:07:14"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-18 23:07:14"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:08:32"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:14:36"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:14:37"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:17:05"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:19:31"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:19:53"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:20:27"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:20:28"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:20:28"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:20:28"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:20:28"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:20:28"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:20:29"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:20:30"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:20:30"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:20:34"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:20:35"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:20:36"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-18 23:21:42"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-18 23:21:44"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-18 23:21:45"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"Processing claim: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"Cache MISS for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"Similar claim found: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"Using clustered result for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"Cache SET for: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:14"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"Processing claim: 2a082cf22ae13d5f","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"Cache MISS for: 2a082cf22ae13d5f","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"Similar claim found: f91495a06a896eb2","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"Using clustered result for: 2a082cf22ae13d5f","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"Cache SET for: 2a082cf22ae13d5f","service":"satyabot","timestamp":"2026-04-18 23:22:39"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-18 23:23:31"}
+{"level":"info","message":"Processing claim: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-18 23:23:31"}
+{"level":"info","message":"Cache MISS for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-18 23:23:31"}
+{"level":"info","message":"Extracted claim: Stocks may return over 25% in 1 year.","service":"satyabot","timestamp":"2026-04-18 23:23:32"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-18 23:23:32"}
+{"level":"info","message":"Reddit returned 3 results","service":"satyabot","timestamp":"2026-04-18 23:23:33"}
+{"level":"info","message":"Wikipedia returned 2 results","service":"satyabot","timestamp":"2026-04-18 23:23:36"}
+{"level":"info","message":"GDELT returned 3 results","service":"satyabot","timestamp":"2026-04-18 23:23:37"}
+{"level":"info","message":"Found 3 related articles","service":"satyabot","timestamp":"2026-04-18 23:23:37"}
+{"level":"info","message":"Claim saved to database: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-18 23:23:39"}
+{"level":"info","message":"Cache SET for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-18 23:23:39"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"Processing claim: b32767ec0de4867c","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"Cache MISS for: b32767ec0de4867c","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"Similar claim found: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"Using clustered result for: b32767ec0de4867c","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"Cache SET for: b32767ec0de4867c","service":"satyabot","timestamp":"2026-04-18 23:26:24"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-18 23:33:27"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-18 23:33:27"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-18 23:33:27"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-18 23:33:43"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:10:03"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:10:04"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:10:13"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-19 00:10:13"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 00:10:13"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:11:56"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:12:09"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-19 00:12:09"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 00:12:09"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-19 00:12:20"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:12:22"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:12:46"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-19 00:12:46"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 00:12:46"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:13:24"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:13:25"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:13:33"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:13:48"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:13:58"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:03"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:20"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:27"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:35"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:36"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:42"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:44"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:45"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:49"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:14:52"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:14:53"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-19 00:15:05"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:15:07"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:16:53"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:17:21"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24007","service":"satyabot","timestamp":"2026-04-19 00:17:21"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 00:17:21"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:18:34"}
+{"level":"info","message":"Processing claim: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:18:34"}
+{"level":"info","message":"Cache MISS for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:18:34"}
+{"level":"info","message":"Extracted claim: Oppn parties preparing impeachment notice against Gyanesh Kumar","service":"satyabot","timestamp":"2026-04-19 00:18:35"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-19 00:18:36"}
+{"level":"info","message":"Reddit returned 3 results","service":"satyabot","timestamp":"2026-04-19 00:18:37"}
+{"level":"info","message":"Wikipedia returned 1 results","service":"satyabot","timestamp":"2026-04-19 00:18:38"}
+{"level":"error","message":"GDELT API Error: 429","service":"satyabot","timestamp":"2026-04-19 00:18:42"}
+{"level":"info","message":"Found 3 related articles","service":"satyabot","timestamp":"2026-04-19 00:18:42"}
+{"level":"info","message":"Claim saved to database: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:18:43"}
+{"level":"info","message":"Cache SET for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:18:43"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-19 00:19:23"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:19:49"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:22:20"}
+{"level":"info","message":"Processing claim: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:22:20"}
+{"level":"info","message":"Cache MISS for: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:22:20"}
+{"level":"info","message":"Extracted claim: HTV-X cargo craft arrives at ISS","service":"satyabot","timestamp":"2026-04-19 00:22:21"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-19 00:22:21"}
+{"level":"info","message":"Reddit returned 3 results","service":"satyabot","timestamp":"2026-04-19 00:22:22"}
+{"level":"info","message":"Wikipedia returned 1 results","service":"satyabot","timestamp":"2026-04-19 00:22:23"}
+{"level":"error","message":"GDELT API Error: timeout of 8000ms exceeded","service":"satyabot","timestamp":"2026-04-19 00:22:29"}
+{"level":"info","message":"Found 3 related articles","service":"satyabot","timestamp":"2026-04-19 00:22:29"}
+{"level":"info","message":"Claim saved to database: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:22:30"}
+{"level":"info","message":"Cache SET for: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:22:30"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:23:07"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:23:15"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:23:16"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:23:43"}
+{"level":"info","message":"Processing claim: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:23:43"}
+{"level":"info","message":"Cache HIT for: 2f72585107640267","service":"satyabot","timestamp":"2026-04-19 00:23:43"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:25:11"}
+{"level":"info","message":"Processing claim: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:25:11"}
+{"level":"info","message":"Cache MISS for: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:25:11"}
+{"level":"info","message":"Extracted claim: Jensen Huang has a productivity hack.","service":"satyabot","timestamp":"2026-04-19 00:25:11"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-19 00:25:13"}
+{"level":"info","message":"Wikipedia returned 2 results","service":"satyabot","timestamp":"2026-04-19 00:25:13"}
+{"level":"info","message":"GDELT returned 0 results","service":"satyabot","timestamp":"2026-04-19 00:25:18"}
+{"level":"info","message":"Found 2 related articles","service":"satyabot","timestamp":"2026-04-19 00:25:18"}
+{"level":"info","message":"Claim saved to database: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:25:20"}
+{"level":"info","message":"Cache SET for: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:25:20"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:27:15"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:27:16"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-19 00:27:47"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 00:27:50"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:28:01"}
+{"level":"info","message":"Processing claim: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:28:01"}
+{"level":"info","message":"Cache HIT for: f0ac5e464eae82c7","service":"satyabot","timestamp":"2026-04-19 00:28:01"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:29:05"}
+{"level":"info","message":"Processing claim: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:29:05"}
+{"level":"info","message":"Cache MISS for: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:29:05"}
+{"level":"info","message":"Extracted claim: Romuald Wadagni wins Beninese presidential election","service":"satyabot","timestamp":"2026-04-19 00:29:05"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-19 00:29:06"}
+{"level":"info","message":"Wikipedia returned 2 results","service":"satyabot","timestamp":"2026-04-19 00:29:08"}
+{"level":"info","message":"GDELT returned 2 results","service":"satyabot","timestamp":"2026-04-19 00:29:12"}
+{"level":"info","message":"Found 3 related articles","service":"satyabot","timestamp":"2026-04-19 00:29:12"}
+{"level":"info","message":"Claim saved to database: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:29:15"}
+{"level":"info","message":"Cache SET for: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:29:15"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 00:31:06"}
+{"level":"info","message":"OCR request received, file size: 141660 bytes","service":"satyabot","timestamp":"2026-04-19 00:31:06"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 00:31:07"}
+{"level":"info","message":"OCR completed in 1438ms, confidence: 67.00%","service":"satyabot","timestamp":"2026-04-19 00:31:08"}
+{"level":"info","message":"Extracted text length: 112 characters","service":"satyabot","timestamp":"2026-04-19 00:31:08"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:31:08"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24699","service":"satyabot","timestamp":"2026-04-19 00:31:08"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 00:31:08"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 00:31:24"}
+{"level":"info","message":"OCR request received, file size: 156256 bytes","service":"satyabot","timestamp":"2026-04-19 00:31:24"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 00:31:24"}
+{"level":"info","message":"OCR completed in 6914ms, confidence: 89.00%","service":"satyabot","timestamp":"2026-04-19 00:31:31"}
+{"level":"info","message":"Extracted text length: 2382 characters","service":"satyabot","timestamp":"2026-04-19 00:31:31"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 00:31:31"}
+{"level":"info","message":" Found verified match in dataset: BFNK_23601","service":"satyabot","timestamp":"2026-04-19 00:31:31"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:48:04"}
+{"level":"info","message":"Processing claim: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:48:04"}
+{"level":"info","message":"Cache HIT for: dce3198f4da6bb5f","service":"satyabot","timestamp":"2026-04-19 00:48:04"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:48:25"}
+{"level":"info","message":"Processing claim: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:48:25"}
+{"level":"info","message":"Cache HIT for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 00:48:25"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"Processing claim: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"Cache MISS for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"Similar claim found: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"Using clustered result for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"Cache SET for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 00:48:42"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:00:00"}
+{"level":"info","message":" Found verified match in dataset: BFNK_18621","service":"satyabot","timestamp":"2026-04-19 01:00:00"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 01:00:37"}
+{"level":"info","message":"OCR request received, file size: 155930 bytes","service":"satyabot","timestamp":"2026-04-19 01:00:37"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 01:00:37"}
+{"level":"info","message":"OCR completed in 6330ms, confidence: 58.00%","service":"satyabot","timestamp":"2026-04-19 01:00:43"}
+{"level":"info","message":"Extracted text length: 1704 characters","service":"satyabot","timestamp":"2026-04-19 01:00:43"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:00:43"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19918","service":"satyabot","timestamp":"2026-04-19 01:00:43"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 01:07:07"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 01:07:08"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 01:08:43"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 01:08:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 01:08:44"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 01:08:44"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 01:08:46"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 01:08:46"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:08:50"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 01:08:50"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:08:50"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 01:08:54"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 01:08:54"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 01:08:54"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 01:17:06"}
+{"level":"info","message":"Processing claim: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 01:17:06"}
+{"level":"info","message":"Cache HIT for: c8b69668b50c52e2","service":"satyabot","timestamp":"2026-04-19 01:17:06"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:19:34"}
+{"level":"info","message":" Found verified match in dataset: BFNK_18621","service":"satyabot","timestamp":"2026-04-19 01:19:34"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"OCR request received, file size: 73269 bytes","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"OCR completed in 230ms, confidence: 90.00%","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"Extracted text length: 26 characters","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":" Found verified match in dataset: BFNK_1575","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"0":"F","1":"a","10":"e","100":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"p","36":"l","37":"a","38":"t","39":"f","4":"C","40":"o","41":"r","42":"m","43":":","44":" ","45":"`","46":"f","47":"a","48":"c","49":"b","5":"h","50":"o","51":"o","52":"k","53":"`","54":" ","55":"i","56":"s","57":" ","58":"n","59":"o","6":"e","60":"t","61":" ","62":"a","63":" ","64":"v","65":"a","66":"l","67":"i","68":"d","69":" ","7":"c","70":"e","71":"n","72":"u","73":"m","74":" ","75":"v","76":"a","77":"l","78":"u","79":"e","8":"k","80":" ","81":"f","82":"o","83":"r","84":" ","85":"p","86":"a","87":"t","88":"h","89":" ","9":"R","90":"`","91":"p","92":"l","93":"a","94":"t","95":"f","96":"o","97":"r","98":"m","99":"`","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:19:44"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:20:03"}
+{"level":"info","message":" Found verified match in dataset: BFNK_25254","service":"satyabot","timestamp":"2026-04-19 01:20:04"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:20:04"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:21:49"}
+{"level":"info","message":" Found verified match in dataset: BFNK_25340","service":"satyabot","timestamp":"2026-04-19 01:21:49"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:21:49"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:22:15"}
+{"level":"info","message":" Found verified match in dataset: BFNK_25367","service":"satyabot","timestamp":"2026-04-19 01:22:15"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:22:15"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:24:20"}
+{"level":"info","message":" Found verified match in dataset: BFNK_25959","service":"satyabot","timestamp":"2026-04-19 01:24:20"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:24:20"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 01:25:25"}
+{"level":"info","message":"OCR request received, file size: 142270 bytes","service":"satyabot","timestamp":"2026-04-19 01:25:25"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 01:25:25"}
+{"level":"info","message":"OCR completed in 1279ms, confidence: 79.00%","service":"satyabot","timestamp":"2026-04-19 01:25:26"}
+{"level":"info","message":"Extracted text length: 237 characters","service":"satyabot","timestamp":"2026-04-19 01:25:26"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:25:26"}
+{"level":"info","message":" Found verified match in dataset: BFNK_22228","service":"satyabot","timestamp":"2026-04-19 01:25:26"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:27:00"}
+{"level":"info","message":" Found verified match in dataset: BFNK_17979","service":"satyabot","timestamp":"2026-04-19 01:27:00"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 01:34:29"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"Processing claim: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"Cache MISS for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"Similar claim found: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"Using clustered result for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"Cache SET for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:49"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 01:35:56"}
+{"level":"info","message":"Processing claim: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:56"}
+{"level":"info","message":"Cache HIT for: 754bf6b7f06ae848","service":"satyabot","timestamp":"2026-04-19 01:35:56"}
+{"level":"info","message":"POST /api/verify","service":"satyabot","timestamp":"2026-04-19 01:36:56"}
+{"level":"info","message":"Processing claim: a248e4ad907147ee","service":"satyabot","timestamp":"2026-04-19 01:36:56"}
+{"level":"info","message":"Cache MISS for: a248e4ad907147ee","service":"satyabot","timestamp":"2026-04-19 01:36:56"}
+{"level":"info","message":"Extracted claim: Developer cannot charge extra for PNG connections","service":"satyabot","timestamp":"2026-04-19 01:36:56"}
+{"level":"info","message":"DuckDuckGo returned 0 results","service":"satyabot","timestamp":"2026-04-19 01:36:57"}
+{"level":"info","message":"Wikipedia returned 2 results","service":"satyabot","timestamp":"2026-04-19 01:36:59"}
+{"level":"error","message":"GDELT API Error: timeout of 8000ms exceeded","service":"satyabot","timestamp":"2026-04-19 01:37:04"}
+{"level":"info","message":"Found 2 related articles","service":"satyabot","timestamp":"2026-04-19 01:37:04"}
+{"level":"info","message":"Claim saved to database: a248e4ad907147ee","service":"satyabot","timestamp":"2026-04-19 01:37:06"}
+{"level":"info","message":"Cache SET for: a248e4ad907147ee","service":"satyabot","timestamp":"2026-04-19 01:37:06"}
+{"level":"info","message":"POST /api/ocr/extract","service":"satyabot","timestamp":"2026-04-19 01:38:36"}
+{"level":"info","message":"OCR request received, file size: 151411 bytes","service":"satyabot","timestamp":"2026-04-19 01:38:36"}
+{"level":"info","message":"Starting OCR text extraction...","service":"satyabot","timestamp":"2026-04-19 01:38:36"}
+{"level":"info","message":"OCR completed in 983ms, confidence: 67.00%","service":"satyabot","timestamp":"2026-04-19 01:38:37"}
+{"level":"info","message":"Extracted text length: 107 characters","service":"satyabot","timestamp":"2026-04-19 01:38:37"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 01:38:37"}
+{"level":"info","message":" Found verified match in dataset: BFNK_24080","service":"satyabot","timestamp":"2026-04-19 01:38:37"}
+{"0":"F","1":"a","10":"e","100":"T","101":"y","102":"p","103":"e","104":"`","105":".","11":"c","12":"o","13":"r","14":"d","15":" ","16":"v","17":"a","18":"l","19":"i","2":"c","20":"d","21":"a","22":"t","23":"i","24":"o","25":"n","26":" ","27":"f","28":"a","29":"i","3":"t","30":"l","31":"e","32":"d","33":":","34":" ","35":"s","36":"o","37":"u","38":"r","39":"c","4":"C","40":"e","41":"T","42":"y","43":"p","44":"e","45":":","46":" ","47":"`","48":"N","49":"o","5":"h","50":"n","51":"_","52":"I","53":"F","54":"C","55":"N","56":"`","57":" ","58":"i","59":"s","6":"e","60":" ","61":"n","62":"o","63":"t","64":" ","65":"a","66":" ","67":"v","68":"a","69":"l","7":"c","70":"i","71":"d","72":" ","73":"e","74":"n","75":"u","76":"m","77":" ","78":"v","79":"a","8":"k","80":"l","81":"u","82":"e","83":" ","84":"f","85":"o","86":"r","87":" ","88":"p","89":"a","9":"R","90":"t","91":"h","92":" ","93":"`","94":"s","95":"o","96":"u","97":"r","98":"c","99":"e","level":"error","message":"Record usage tracking error:","service":"satyabot","timestamp":"2026-04-19 01:38:37"}
+{"level":"info","message":"Shutting down gracefully...","service":"satyabot","timestamp":"2026-04-19 02:05:25"}
+{"level":"info","message":"Groq LLM initialized with model: llama-3.3-70b-versatile","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"MongoDB Connected: localhost","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"MongoDB connected successfully","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Redis Client Connected","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Redis connected successfully","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Initializing Tesseract OCR worker...","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Tesseract OCR worker initialized successfully","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Supported languages: eng+hin","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"OCR Service initialized successfully","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"SatyaBot server running on port 5000","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Environment: development","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"Health Check: http://localhost:5000/health","service":"satyabot","timestamp":"2026-04-19 02:16:50"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 02:16:54"}
+{"level":"info","message":" Found verified match in dataset: BFNK_12872","service":"satyabot","timestamp":"2026-04-19 02:16:54"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 02:17:36"}
+{"level":"info","message":" Found verified match in dataset: BFNK_12872","service":"satyabot","timestamp":"2026-04-19 02:17:36"}
+{"level":"info","message":"POST /api/verify/dataset","service":"satyabot","timestamp":"2026-04-19 02:18:51"}
+{"level":"info","message":" Found verified match in dataset: BFNK_19177","service":"satyabot","timestamp":"2026-04-19 02:18:51"}

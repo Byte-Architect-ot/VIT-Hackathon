@@ -25,10 +25,10 @@ npm start
 ```
 - Health Check: http://localhost:5000/health
 
-#### Option B: Run the Gemini Bot Server (Port 5001)
-Lightweight implementation specifically for Twilio/WhatsApp using Google Gemini.
+#### Option B: Run the WhatsApp Bot Server (Port 5001)
+Lightweight implementation specifically for Twilio/WhatsApp.
 ```bash
-node gemini-server.js
+node wtsp.js
 ```
 - Webhook URL: http://localhost:5001/webhook
 

@@ -10,8 +10,8 @@ const connectDB = async () => {
     });
 
     logger.info(`MongoDB Connected: ${conn.connection.host}`);
-    
-    mongoose.connection.on('error', (err) => {
+
+        mongoose.connection.on('error', (err) => {
       logger.error('MongoDB connection error:', err);
     });
 

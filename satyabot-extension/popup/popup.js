@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnText = verifyBtn.querySelector('.btn-text');
   const resultContainer = document.getElementById("resultContainer");
   const errorContainer = document.getElementById("errorContainer");
-  
-  const statusLabel = document.getElementById("statusLabel");
+
+    const statusLabel = document.getElementById("statusLabel");
   const credScore = document.getElementById("credScore");
   const explanationText = document.getElementById("explanationText");
   const suggestedAction = document.getElementById("suggestedAction");
@@ -25,17 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     errorContainer.style.display = "none";
     resultContainer.style.display = "none";
-    
-    btnText.textContent = "Analyzing...";
+
+        btnText.textContent = "Analyzing...";
     verifyBtn.disabled = true;
 
     try {
       const data = await verifyText(claim, { userId: 'extension_popup' });
-      
-      const status = data.status || "UNVERIFIED";
+
+            const status = data.status || "UNVERIFIED";
       const score = data.confidence_score || 0;
-      
-      currentExplanations.en = data.explanation_english || data.explanation || "No explanation provided.";
+
+            currentExplanations.en = data.explanation_english || data.explanation || "No explanation provided.";
       currentExplanations.hi = data.explanation_hindi || currentExplanations.en;
 
       statusBanner.className = "status-banner";
@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       else statusBanner.classList.add("status-unverified");
 
       statusLabel.textContent = status;
-      
-      const activeTab = document.querySelector('.tab-btn.active').dataset.lang;
+
+            const activeTab = document.querySelector('.tab-btn.active').dataset.lang;
       explanationText.textContent = currentExplanations[activeTab];
       suggestedAction.textContent = data.suggested_action || "Wait for official verification.";
 
@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
           a.className = 'source-card';
           a.href = src.url;
           a.target = '_blank';
-          
-          a.innerHTML = `
+
+                    a.innerHTML = `
             <div class="source-header">
               <span class="source-title" title="${src.title}">${src.title}</span>
               <span class="tier-badge tier-${src.credibilityTier || 'low'}">${src.credibilityTier || 'low'}</span>
@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       resultContainer.style.display = "flex";
 
-      // Animate the confidence score count-up
       setTimeout(() => {
         animateValue(credScore, 0, score, 800);
       }, 50);
@@ -90,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Tab switching logic
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -99,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Number animation utility
   function animateValue(obj, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {

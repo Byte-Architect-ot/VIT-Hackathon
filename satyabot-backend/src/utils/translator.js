@@ -7,8 +7,8 @@ const translateToHindi = async (text) => {
       from: 'en', 
       to: 'hi' 
     });
-    
-    return result.text;
+
+        return result.text;
   } catch (error) {
     logger.error('Translation error:', error.message);
     return text; 

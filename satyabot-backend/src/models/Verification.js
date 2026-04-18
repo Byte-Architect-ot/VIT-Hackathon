@@ -8,14 +8,14 @@ const verificationSchema = new mongoose.Schema({
   },
   userId: String, 
   userMessage: String,
-  
-  processingTime: Number, 
+
+    processingTime: Number, 
   cacheHit: {
     type: Boolean,
     default: false
   },
-  
-  llmCalls: {
+
+    llmCalls: {
     type: Number,
     default: 0
   },
@@ -23,14 +23,14 @@ const verificationSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  
-  result: {
+
+    result: {
     status: String,
     confidence: Number,
     explanation: String
   },
-  
-  userLocation: {
+
+    userLocation: {
     type: String 
   }
 }, {

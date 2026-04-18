@@ -20,30 +20,30 @@ class CacheSeeder {
     async seed() {
     try {
       logger.info(' Starting cache seeding...');
-      
-      await connectDB();
+
+            await connectDB();
       await connectRedis();
-      
-      const records = await FactCheckRecord.find({
+
+            const records = await FactCheckRecord.find({
         trustScore: { $gte: 80 },
         label: { $in: ['FALSE', 'TRUE'] }
       }).limit(5000);
-      
-      logger.info(`Found ${records.length} high-quality records to seed`);
-      
-      for (const record of records) {
+
+            logger.info(`Found ${records.length} high-quality records to seed`);
+
+            for (const record of records) {
         await this.processRecord(record);
         this.stats.processed++;
-        
-        if (this.stats.processed % 100 === 0) {
+
+                if (this.stats.processed % 100 === 0) {
           logger.info(`Progress: ${this.stats.processed}/${records.length}`);
         }
       }
-      
-      this.printStats();
+
+            this.printStats();
       process.exit(0);
-      
-    } catch (error) {
+
+          } catch (error) {
       logger.error('Seeding failed:', error);
       process.exit(1);
     }
@@ -51,8 +51,8 @@ class CacheSeeder {
 
     async processRecord(record) {
     try {
-      
-      const claimData = {
+
+            const claimData = {
         claimHash: record.claimHash,
         originalText: record.statement,
         extractedClaim: record.statementEnglish || record.statement,
@@ -61,28 +61,28 @@ class CacheSeeder {
         explanationEnglish: this.generateExplanation(record, 'en'),
         explanationHindi: this.generateExplanation(record, 'hi'),
         suggestedAction: this.getSuggestedAction(record.label),
-        
-        trustedContext: [{
+
+                trustedContext: [{
           title: `Verified by ${record.factCheckSource}`,
           source: record.factCheckSource,
           url: record.factCheckLink,
           publishedAt: record.publishDate
         }],
-        
-        clusterGroup: record.extractedKeywords.slice(0, 3).join('_'),
+
+                clusterGroup: record.extractedKeywords.slice(0, 3).join('_'),
         regions: record.region ? [record.region] : [],
         queryCount: 0
       };
-      
-      await Claim.updateOne(
+
+            await Claim.updateOne(
         { claimHash: record.claimHash },
         { $set: claimData },
         { upsert: true }
       );
-      
-      this.stats.migrated++;
-      
-      const cacheData = {
+
+            this.stats.migrated++;
+
+            const cacheData = {
         status: claimData.status,
         confidence_score: claimData.confidenceScore,
         core_claim_extracted: claimData.extractedClaim,
@@ -90,11 +90,11 @@ class CacheSeeder {
         explanation_hindi: claimData.explanationHindi,
         suggested_action: claimData.suggestedAction
       };
-      
-      await cacheService.set(record.claimHash, cacheData, CACHE.TTL * 24); 
+
+            await cacheService.set(record.claimHash, cacheData, CACHE.TTL * 24); 
       this.stats.cached++;
-      
-    } catch (error) {
+
+          } catch (error) {
       logger.error(`Error processing record ${record.originalId}:`, error.message);
       this.stats.errors++;
     }
@@ -108,14 +108,14 @@ class CacheSeeder {
       'UNVERIFIED': 'UNVERIFIED',
       'SATIRE': 'FAKE'
     };
-    
-    return mapping[label] || 'UNVERIFIED';
+
+        return mapping[label] || 'UNVERIFIED';
   }
 
     generateExplanation(record, language) {
     const status = this.mapLabelToStatus(record.label);
-    
-    if (language === 'en') {
+
+        if (language === 'en') {
       if (status === 'FAKE') {
         return `This claim has been fact-checked and found to be FALSE by ${record.factCheckSource}. Please verify before sharing.`;
       } else if (status === 'TRUE') {
@@ -124,8 +124,8 @@ class CacheSeeder {
         return `This claim could not be verified. Check official sources for updates.`;
       }
     } else {
-      
-      if (status === 'FAKE') {
+
+            if (status === 'FAKE') {
         return `यह दावा ${record.factCheckSource} द्वारा गलत पाया गया है। कृपया साझा करने से पहले सत्यापित करें।`;
       } else if (status === 'TRUE') {
         return `यह दावा ${record.factCheckSource} द्वारा सत्य के रूप में सत्यापित किया गया है।`;
@@ -143,8 +143,8 @@ class CacheSeeder {
       'UNVERIFIED': 'Wait for official confirmation.',
       'SATIRE': 'This is satire/parody. Do not share as real news.'
     };
-    
-    return actions[label] || 'Verify before sharing.';
+
+        return actions[label] || 'Verify before sharing.';
   }
 
     printStats() {

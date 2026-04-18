@@ -20,31 +20,31 @@ class DatasetImporter {
     async import() {
     try {
       logger.info(' Starting dataset import...');
-      
-      await connectDB();
-      
-      const workbook = XLSX.readFile(this.filePath);
+
+            await connectDB();
+
+            const workbook = XLSX.readFile(this.filePath);
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
-      
-      const rawData = XLSX.utils.sheet_to_json(worksheet);
+
+            const rawData = XLSX.utils.sheet_to_json(worksheet);
       this.stats.total = rawData.length;
-      
-      logger.info(` Found ${rawData.length} records in dataset`);
-      
-      const batchSize = 100;
+
+            logger.info(` Found ${rawData.length} records in dataset`);
+
+            const batchSize = 100;
       const importBatchId = new Date().toISOString();
-      
-      for (let i = 0; i < rawData.length; i += batchSize) {
+
+            for (let i = 0; i < rawData.length; i += batchSize) {
         const batch = rawData.slice(i, i + batchSize);
         await this.processBatch(batch, importBatchId);
-        
-        logger.info(`Progress: ${Math.min(i + batchSize, rawData.length)}/${rawData.length}`);
+
+                logger.info(`Progress: ${Math.min(i + batchSize, rawData.length)}/${rawData.length}`);
       }
-      
-      this.printStats();
-      
-      process.exit(0);
+
+            this.printStats();
+
+            process.exit(0);
     } catch (error) {
       logger.error('Import failed:', error);
       process.exit(1);
@@ -54,25 +54,25 @@ class DatasetImporter {
     async processBatch(batch, importBatchId) {
     const operations = batch.map(row => this.transformRow(row, importBatchId));
     const validRecords = operations.filter(op => op !== null);
-    
-    if (validRecords.length === 0) return;
-    
-    try {
-      
-      const bulkOps = validRecords.map(record => ({
+
+        if (validRecords.length === 0) return;
+
+        try {
+
+            const bulkOps = validRecords.map(record => ({
         updateOne: {
           filter: { originalId: record.originalId },
           update: { $set: record },
           upsert: true
         }
       }));
-      
-      const result = await FactCheckRecord.bulkWrite(bulkOps);
-      
-      this.stats.imported += result.upsertedCount + result.modifiedCount;
+
+            const result = await FactCheckRecord.bulkWrite(bulkOps);
+
+            this.stats.imported += result.upsertedCount + result.modifiedCount;
       this.stats.skipped += validRecords.length - (result.upsertedCount + result.modifiedCount);
-      
-    } catch (error) {
+
+          } catch (error) {
       logger.error('Batch import error:', error.message);
       this.stats.errors += validRecords.length;
     }
@@ -80,58 +80,55 @@ class DatasetImporter {
 
     transformRow(row, importBatchId) {
     try {
-      
-      let publishDate = null;
+
+            let publishDate = null;
       if (row.Publish_Date) {
         publishDate = this.parseDate(row.Publish_Date);
       }
-      
-      const statementText = row.Eng_Trans_Statement || row.Statement || '';
+
+            const statementText = row.Eng_Trans_Statement || row.Statement || '';
       const claimHash = generateHash(statementText);
-      
-      // Extract keywords
+
       const keywords = this.extractKeywords(statementText);
-      
-      // Map label to standardized format
+
       const label = this.standardizeLabel(row.Label);
-      
-      // Calculate trust score based on source
+
       const trustScore = this.calculateTrustScore(row.Fact_Check_Source, row.Source_Type);
-      
-      return {
+
+            return {
         originalId: row.id,
         authorName: row.Author_Name,
         factCheckSource: row.Fact_Check_Source,
         sourceType: row.Source_Type || 'Independent',
-        
-        statement: row.Statement,
+
+                statement: row.Statement,
         statementEnglish: row.Eng_Trans_Statement,
-        
-        newsBody: row.News_Body,
+
+                newsBody: row.News_Body,
         newsBodyEnglish: row.Eng_Trans_News_Body,
-        
-        mediaLink: row.Media_Link,
+
+                mediaLink: row.Media_Link,
         publishDate,
         factCheckLink: row.Fact_Check_Link,
-        
-        newsCategory: row.News_Category,
+
+                newsCategory: row.News_Category,
         language: row.Language,
         region: row.Region,
         platform: row.Platform,
-        
-        contentType: {
+
+                contentType: {
           text: this.parseBoolean(row.Text),
           video: this.parseBoolean(row.Video),
           image: this.parseBoolean(row.Image)
         },
-        
-        label,
-        
-        claimHash,
+
+                label,
+
+                claimHash,
         extractedKeywords: keywords,
         trustScore,
-        
-        importBatch: importBatchId
+
+                importBatch: importBatchId
       };
     } catch (error) {
       logger.error(`Error transforming row ${row.id}:`, error.message);
@@ -172,22 +169,22 @@ class DatasetImporter {
       'FAKE': 'FALSE',
       'REAL': 'TRUE'
     };
-    
-    if (label == null) return 'UNVERIFIED';
+
+        if (label == null) return 'UNVERIFIED';
     const safeLabel = typeof label === 'object' ? Object.values(label).join('') : String(label);
     return mapping[safeLabel.toUpperCase()] || 'UNVERIFIED';
   }
 
     extractKeywords(text) {
     if (!text) return [];
-    
-    const stopWords = new Set([
+
+        const stopWords = new Set([
       'the', 'is', 'in', 'at', 'on', 'a', 'an', 'and', 'or', 'but',
       'was', 'were', 'been', 'being', 'have', 'has', 'had', 'do', 'does',
       'to', 'from', 'for', 'of', 'with', 'by'
     ]);
-    
-    return text
+
+        return text
       .toLowerCase()
       .replace(/[^\w\s]/g, '')
       .split(/\s+/)
@@ -195,9 +192,6 @@ class DatasetImporter {
       .slice(0, 10);
   }
 
-  /**
-   * Calculate trust score based on source
-   */
   calculateTrustScore(source, sourceType) {
     const trustedSources = {
       'Alt News': 95,
@@ -208,15 +202,15 @@ class DatasetImporter {
       'AFP Fact Check': 95,
       'IFCN': 90
     };
-    
-    if (trustedSources[source]) {
+
+        if (trustedSources[source]) {
       return trustedSources[source];
     }
-    
-    if (sourceType === 'IFCN') return 85;
+
+        if (sourceType === 'IFCN') return 85;
     if (sourceType === 'Government') return 95;
-    
-    return 75; 
+
+        return 75; 
   }
 
     printStats() {

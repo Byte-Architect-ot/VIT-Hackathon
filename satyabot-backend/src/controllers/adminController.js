@@ -13,8 +13,8 @@ class AdminController {
       const trending = await Promise.all(
         redisTrending.map(async (item) => {
           const claim = await Claim.findOne({ claimHash: item.claimHash });
-          
-          if (claim) {
+
+                    if (claim) {
             return {
               claimHash: item.claimHash,
               extractedClaim: claim.extractedClaim,
@@ -26,8 +26,8 @@ class AdminController {
               regions: claim.regions
             };
           }
-          
-          return null;
+
+                    return null;
         })
       );
 

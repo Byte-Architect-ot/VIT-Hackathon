@@ -11,11 +11,11 @@ const datasetService = require('../services/datasetService');
 class VerificationController {
     async verifyWithDataset(req, res, next) {
   const startTime = Date.now();
-  
-  try {
+
+    try {
     const { text, userId, location } = req.body;
-    
-    if (!text || text.trim().length === 0) {
+
+        if (!text || text.trim().length === 0) {
       return res.status(400).json({
         error: 'Text is required',
         code: 'MISSING_TEXT'
@@ -23,15 +23,15 @@ class VerificationController {
     }
 
     const similarClaims = await datasetService.searchSimilarClaims(text, 3);
-    
-    if (similarClaims.length > 0) {
+
+        if (similarClaims.length > 0) {
       const bestMatch = similarClaims[0];
-      
-      logger.info(` Found verified match in dataset: ${bestMatch.originalId}`);
-      
-      await datasetService.recordUsage(bestMatch._id);
-      
-      return res.status(200).json({
+
+            logger.info(` Found verified match in dataset: ${bestMatch.originalId}`);
+
+            await datasetService.recordUsage(bestMatch._id);
+
+            return res.status(200).json({
         status: this._mapLabelToStatus(bestMatch.label),
         confidence_score: bestMatch.trustScore,
         core_claim_extracted: bestMatch.statementEnglish || bestMatch.statement,
@@ -43,10 +43,10 @@ class VerificationController {
         processingTime: Date.now() - startTime
       });
     }
-    
-    return await this.verify(req, res, next);
-    
-  } catch (error) {
+
+        return await this.verify(req, res, next);
+
+      } catch (error) {
     logger.error('Dataset verification error:', error);
     next(error);
   }
@@ -74,11 +74,11 @@ _getSuggestedAction(label) {
 
   async verify(req, res, next) {
     const startTime = Date.now();
-    
-    try {
+
+        try {
       const { text, userId, location } = req.body;
-      
-      if (!text || text.trim().length === 0) {
+
+            if (!text || text.trim().length === 0) {
         return res.status(400).json({
           error: 'Text is required',
           code: 'MISSING_TEXT'
@@ -89,12 +89,12 @@ _getSuggestedAction(label) {
       logger.info(`Processing claim: ${claimHash}`);
 
       const cachedResult = await cacheService.get(claimHash);
-      
-      if (cachedResult) {
-        
-        await cacheService.incrementTrending(claimHash);
-        
-        await this._logVerification({
+
+            if (cachedResult) {
+
+                await cacheService.incrementTrending(claimHash);
+
+                await this._logVerification({
           claimHash,
           userId,
           userMessage: text,
@@ -112,13 +112,13 @@ _getSuggestedAction(label) {
       }
 
       const similarClaim = await clusterService.findSimilarClaim(text);
-      
-      if (similarClaim) {
+
+            if (similarClaim) {
         logger.info(`Using clustered result for: ${claimHash}`);
-        
-        await similarClaim.incrementQuery();
-        
-        const result = {
+
+                await similarClaim.incrementQuery();
+
+                const result = {
           status: similarClaim.status,
           confidence_score: similarClaim.confidenceScore,
           core_claim_extracted: similarClaim.extractedClaim,
@@ -126,10 +126,10 @@ _getSuggestedAction(label) {
           explanation_hindi: similarClaim.explanationHindi,
           suggested_action: similarClaim.suggestedAction
         };
-        
-        await cacheService.set(claimHash, result);
-        
-        return res.status(200).json({
+
+                await cacheService.set(claimHash, result);
+
+                return res.status(200).json({
           ...result,
           clustered: true,
           processingTime: Date.now() - startTime
@@ -144,7 +144,7 @@ _getSuggestedAction(label) {
 
       const verificationResult = await llmService.verifyClaim(
         extractedClaim,
-        trustedContext.articles // Pass only the articles to the LLM
+        trustedContext.articles 
       );
 
       try {
@@ -187,7 +187,6 @@ _getSuggestedAction(label) {
         userLocation: location
       });
 
-      // Merge LLM confidence with news source credibility
       const llmConfidence = verificationResult.confidence_score || 0;
       const newsCredibility = trustedContext.credibilityScore || 0;
       const mergedConfidence = Math.round(llmConfidence * 0.7 + newsCredibility * 0.3);

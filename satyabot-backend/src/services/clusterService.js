@@ -4,10 +4,10 @@ const logger = require('../utils/logger');
 class ClusterService {
     async findSimilarClaim(extractedClaim) {
     try {
-      
-      const keywords = this._extractKeywords(extractedClaim);
-      
-      const similarClaims = await Claim.find({
+
+            const keywords = this._extractKeywords(extractedClaim);
+
+            const similarClaims = await Claim.find({
         extractedClaim: { 
           $regex: keywords.join('|'), 
           $options: 'i' 
@@ -15,13 +15,13 @@ class ClusterService {
       })
       .sort({ createdAt: -1 })
       .limit(1);
-      
-      if (similarClaims.length > 0) {
+
+            if (similarClaims.length > 0) {
         logger.info(`Similar claim found: ${similarClaims[0].claimHash}`);
         return similarClaims[0];
       }
-      
-      return null;
+
+            return null;
     } catch (error) {
       logger.error('Cluster search error:', error.message);
       return null;
@@ -30,8 +30,8 @@ class ClusterService {
 
     _extractKeywords(text) {
     const stopWords = ['the', 'is', 'in', 'at', 'on', 'a', 'an', 'and', 'or', 'but'];
-    
-    return text
+
+        return text
       .toLowerCase()
       .split(/\s+/)
       .filter(word => word.length > 3 && !stopWords.includes(word))

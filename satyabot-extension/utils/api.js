@@ -1,18 +1,14 @@
-// API Utility Functions
 
 const API_CONFIG = {
-  baseUrl: 'http://localhost:8001/api',
+  baseUrl: 'http://localhost:5000/api',
   timeout: 15000
 };
 
-/**
- * Verify text with SatyaBot API
- */
 async function verifyText(text, options = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
-  
-  try {
+
+    try {
     const response = await fetch(`${API_CONFIG.baseUrl}/verify`, {
       method: 'POST',
       headers: {
@@ -25,37 +21,34 @@ async function verifyText(text, options = {}) {
       }),
       signal: controller.signal
     });
-    
-    clearTimeout(timeoutId);
-    
-    if (!response.ok) {
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
     }
-    
-    return await response.json();
+
+        return await response.json();
   } catch (error) {
     clearTimeout(timeoutId);
-    
-    if (error.name === 'AbortError') {
+
+        if (error.name === 'AbortError') {
       throw new Error('Request timeout');
     }
-    
-    throw error;
+
+        throw error;
   }
 }
 
-/**
- * Get trending rumors
- */
 async function getTrending(limit = 10) {
   try {
     const response = await fetch(`${API_CONFIG.baseUrl}/admin/trending?limit=${limit}`);
-    
-    if (!response.ok) {
+
+        if (!response.ok) {
       throw new Error('Failed to fetch trending data');
     }
-    
-    return await response.json();
+
+        return await response.json();
   } catch (error) {
     console.error('Get trending error:', error);
     return { data: [] };

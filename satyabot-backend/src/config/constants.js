@@ -1,6 +1,6 @@
 module.exports = {
-  
-  STATUS: {
+
+    STATUS: {
     FAKE: 'FAKE',
     TRUE: 'TRUE',
     UNVERIFIED: 'UNVERIFIED'

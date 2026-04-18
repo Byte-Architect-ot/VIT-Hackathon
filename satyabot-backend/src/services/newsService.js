@@ -15,13 +15,12 @@ class NewsService {
       this._fetchDuckDuckGo(keywords),
       this._fetchWikipedia(keywords),
       this._fetchGDELT(keywords),
-      this._fetchReddit(keywords)
     ]);
 
     const sources = [];
 
     results.forEach((result, index) => {
-      const apiNames = ['DuckDuckGo', 'Wikipedia', 'GDELT', 'Reddit'];
+      const apiNames = ['DuckDuckGo', 'Wikipedia', 'GDELT'];
       if (result.status === 'fulfilled' && result.value) {
         const items = Array.isArray(result.value) ? result.value : [result.value];
         sources.push(...items);
@@ -31,8 +30,7 @@ class NewsService {
     });
 
     const filteredSources = sources.filter(s => s && s.title);
-    
-    // Sort sources by credibility tier: high first, then medium, then low
+
     const tierValue = { 'high': 3, 'medium': 2, 'low': 1 };
     filteredSources.sort((a, b) => (tierValue[b.credibilityTier] || 0) - (tierValue[a.credibilityTier] || 0));
 
@@ -250,11 +248,17 @@ class NewsService {
   _calculateCredibilityScore(sources) {
     if (!sources || sources.length === 0) return 0;
 
+    const hasWikipedia = sources.some(s => s.apiSource === 'wikipedia');
+    const hasHighTierNews = sources.some(s => s.credibilityTier === 'high');
+
+    if (hasWikipedia || hasHighTierNews) {
+      return 100;
+    }
+
     const tierWeights = { high: 3, medium: 2, low: 1 };
     let totalWeight = 0;
     let maxPossibleWeight = 0;
 
-    const hasWikipedia = sources.some(s => s.apiSource === 'wikipedia');
     const hasGDELT = sources.some(s => s.apiSource === 'gdelt');
     const sourceAPIs = new Set(sources.map(s => s.apiSource));
 
@@ -266,7 +270,6 @@ class NewsService {
 
     let score = Math.round((totalWeight / maxPossibleWeight) * 60);
 
-    if (hasWikipedia) score += 15;
     if (hasGDELT) score += 10;
     if (sourceAPIs.size >= 3) score += 10;
     if (sourceAPIs.size >= 2) score += 5;

@@ -1,14 +1,13 @@
 const crypto = require('crypto');
 
 const generateHash = (text) => {
-  
-  const normalized = text
+
+    const normalized = text
     .toLowerCase()
-    .replace(/[^\w\s]/g, '') // Remove punctuation
-    .replace(/\s+/g, ' ') // Normalize whitespace
+    .replace(/[^\w\s]/g, '') 
+    .replace(/\s+/g, ' ') 
     .trim();
 
-  // Generate SHA256 hash
   return crypto
     .createHash('sha256')
     .update(normalized)

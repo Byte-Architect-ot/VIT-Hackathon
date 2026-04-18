@@ -8,8 +8,7 @@ class LLMService {
     this.groqApiKey = process.env.GROQ_API_KEY;
     this.openaiApiKey = process.env.OPENAI_API_KEY;
     this.model = process.env.LLM_MODEL || 'llama-3.3-70b-versatile';
-    
-    // Initialize Groq client
+
     if (this.provider === 'groq' && this.groqApiKey) {
       this.groqClient = new Groq({
         apiKey: this.groqApiKey
@@ -23,9 +22,6 @@ class LLMService {
     }
   }
 
-  /**
-   * Extract the core claim from user's forwarded message
-   */
   async extractClaim(userText) {
     const systemPrompt = `You are a claim extraction expert. Extract the core factual claim from the user's message in 5-10 words. Focus on the verifiable statement.
 
@@ -40,14 +36,10 @@ Only return the extracted claim, nothing else.`;
       return response.trim();
     } catch (error) {
       logger.error('LLM Claim Extraction Error:', error.message);
-      // Fallback: return first 100 chars
       return userText.substring(0, 100).trim();
     }
   }
 
-  /**
-   * Verify claim against trusted news context
-   */
   async verifyClaim(userClaim, trustedContext) {
     const systemPrompt = `You are the "SatyaBot Verification Engine," a rigorous fact-checking AI. You are objective, analytical, and your top priority is factual accuracy.
 
@@ -92,25 +84,22 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
 
     try {
       const response = await this._callLLM(systemPrompt, userPrompt, LLM.MAX_TOKENS);
-      
-      // Parse JSON response
+
       let cleanedResponse = response
         .replace(/```json\n?|\n?```/g, '')
         .replace(/```\n?|\n?```/g, '')
         .trim();
-      
-      const parsed = JSON.parse(cleanedResponse);
-      
-      // Validate response structure
+
+            const parsed = JSON.parse(cleanedResponse);
+
       if (!parsed.status || parsed.confidence_score === undefined || parsed.confidence_score === null) {
         throw new Error('Invalid LLM response structure');
       }
-      
-      return parsed;
+
+            return parsed;
     } catch (error) {
       logger.error('LLM Verification Error:', error.message);
-      
-      // Fallback response
+
       return {
         status: 'UNVERIFIED',
         confidence_score: 0,
@@ -122,9 +111,6 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
     }
   }
 
-  /**
-   * Private method to call LLM API
-   */
   async _callLLM(systemPrompt, userPrompt, maxTokens) {
     if (this.provider === 'groq') {
       return await this._callGroq(systemPrompt, userPrompt, maxTokens);
@@ -133,13 +119,10 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
     } else if (this.provider === 'mock') {
       return this._callMock(systemPrompt, userPrompt);
     }
-    
-    throw new Error(`Unsupported LLM provider: ${this.provider}`);
+
+        throw new Error(`Unsupported LLM provider: ${this.provider}`);
   }
 
-  /**
-   * Call Groq API
-   */
   async _callGroq(systemPrompt, userPrompt, maxTokens) {
     try {
       const chatCompletion = await this.groqClient.chat.completions.create({
@@ -167,13 +150,10 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
     }
   }
 
-  /**
-   * Call OpenAI API (fallback)
-   */
   async _callOpenAI(systemPrompt, userPrompt, maxTokens) {
     const axios = require('axios');
-    
-    try {
+
+        try {
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
         {
@@ -201,22 +181,18 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
     }
   }
 
-  /**
-   * Mock LLM (fallback when no API key)
-   */
   _callMock(systemPrompt, userPrompt) {
     logger.warn('Using MOCK LLM response');
-    
-    // Simple mock that extracts first sentence
+
     const lines = userPrompt.split('\n');
     const claimLine = lines.find(line => line.includes('USER_CLAIM:'));
-    
-    if (claimLine) {
+
+        if (claimLine) {
       const claim = claimLine.replace('USER_CLAIM:', '').trim();
       return claim.substring(0, 80);
     }
-    
-    return userPrompt.substring(0, 80);
+
+        return userPrompt.substring(0, 80);
   }
 }
 

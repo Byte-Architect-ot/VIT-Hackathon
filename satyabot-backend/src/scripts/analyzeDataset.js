@@ -7,29 +7,29 @@ class DatasetAnalyzer {
   async analyze() {
     try {
       await connectDB();
-      
-      logger.info(' Analyzing Fact-Check Dataset...\n');
-      
-      const totalRecords = await FactCheckRecord.countDocuments();
+
+            logger.info(' Analyzing Fact-Check Dataset...\n');
+
+            const totalRecords = await FactCheckRecord.countDocuments();
       logger.info(`Total Records: ${totalRecords}\n`);
-      
-      await this.analyzeLabelDistribution();
-      
-      await this.analyzeSourceDistribution();
-      
-      await this.analyzeRegionalDistribution();
-      
-      await this.analyzePlatformDistribution();
-      
-      await this.analyzeCategoryDistribution();
-      
-      await this.analyzeLanguageDistribution();
-      
-      await this.analyzeContentTypes();
-      
-      await this.analyzeTopKeywords();
-      
-      process.exit(0);
+
+            await this.analyzeLabelDistribution();
+
+            await this.analyzeSourceDistribution();
+
+            await this.analyzeRegionalDistribution();
+
+            await this.analyzePlatformDistribution();
+
+            await this.analyzeCategoryDistribution();
+
+            await this.analyzeLanguageDistribution();
+
+            await this.analyzeContentTypes();
+
+            await this.analyzeTopKeywords();
+
+            process.exit(0);
     } catch (error) {
       logger.error('Analysis failed:', error);
       process.exit(1);
@@ -46,8 +46,8 @@ class DatasetAnalyzer {
       },
       { $sort: { count: -1 } }
     ]);
-    
-    logger.info(' LABEL DISTRIBUTION:');
+
+        logger.info(' LABEL DISTRIBUTION:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count}`);
     });
@@ -66,8 +66,8 @@ class DatasetAnalyzer {
       { $sort: { count: -1 } },
       { $limit: 10 }
     ]);
-    
-    logger.info(' TOP FACT-CHECK SOURCES:');
+
+        logger.info(' TOP FACT-CHECK SOURCES:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count} (Trust: ${item.avgTrustScore.toFixed(1)})`);
     });
@@ -85,8 +85,8 @@ class DatasetAnalyzer {
       { $sort: { count: -1 } },
       { $limit: 10 }
     ]);
-    
-    logger.info('️  TOP REGIONS:');
+
+        logger.info('️  TOP REGIONS:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count}`);
     });
@@ -103,8 +103,8 @@ class DatasetAnalyzer {
       },
       { $sort: { count: -1 } }
     ]);
-    
-    logger.info(' PLATFORM DISTRIBUTION:');
+
+        logger.info(' PLATFORM DISTRIBUTION:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count}`);
     });
@@ -122,8 +122,8 @@ class DatasetAnalyzer {
       { $sort: { count: -1 } },
       { $limit: 10 }
     ]);
-    
-    logger.info(' TOP CATEGORIES:');
+
+        logger.info(' TOP CATEGORIES:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count}`);
     });
@@ -140,8 +140,8 @@ class DatasetAnalyzer {
       },
       { $sort: { count: -1 } }
     ]);
-    
-    logger.info(' LANGUAGE DISTRIBUTION:');
+
+        logger.info(' LANGUAGE DISTRIBUTION:');
     distribution.forEach(item => {
       logger.info(`  ${item._id}: ${item.count}`);
     });
@@ -152,8 +152,8 @@ class DatasetAnalyzer {
     const text = await FactCheckRecord.countDocuments({ 'contentType.text': true });
     const video = await FactCheckRecord.countDocuments({ 'contentType.video': true });
     const image = await FactCheckRecord.countDocuments({ 'contentType.image': true });
-    
-    logger.info(' CONTENT TYPES:');
+
+        logger.info(' CONTENT TYPES:');
     logger.info(`  Text: ${text}`);
     logger.info(`  Video: ${video}`);
     logger.info(`  Image: ${image}`);
@@ -172,8 +172,8 @@ class DatasetAnalyzer {
       { $sort: { count: -1 } },
       { $limit: 20 }
     ]);
-    
-    logger.info(' TOP KEYWORDS:');
+
+        logger.info(' TOP KEYWORDS:');
     keywords.forEach((item, index) => {
       logger.info(`  ${index + 1}. ${item._id}: ${item.count}`);
     });
