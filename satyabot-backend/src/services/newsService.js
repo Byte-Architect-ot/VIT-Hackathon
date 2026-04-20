@@ -1,40 +1,56 @@
 const axios = require('axios');
 const logger = require('../utils/logger');
+const { TRUSTED_SOURCES } = require('../config/constants');
 
 class NewsService {
   constructor() {
     this.newsApiKey = process.env.NEWS_API_KEY;
     this.gdeltEndpoint = process.env.GDELT_API_ENDPOINT || 'https://api.gdeltproject.org/api/v2/doc/doc';
-    this.timeout = 8000;
+    this.googleNewsApi = process.env.GOOGLE_NEWS_API || 'https://newsapi.org/v2/everything';
+    this.googleFactCheckKey = process.env.GOOGLE_FACTCHECK_API_KEY || process.env.GEMINI_API_KEY;
+    this.timeout = 6000;
   }
 
-  async fetchRelatedNews(claim, limit = 5) {
+  async fetchRelatedNews(claim, limit = 8) {
     const keywords = this._extractSearchKeywords(claim);
 
     const results = await Promise.allSettled([
       this._fetchDuckDuckGo(keywords),
       this._fetchWikipedia(keywords),
       this._fetchGDELT(keywords),
+      this._fetchGoogleNewsAPI(keywords),
+      this._fetchTrustedSiteSearch(keywords),
+      this._fetchGoogleFactCheck(keywords),
     ]);
 
+    const apiNames = ['DuckDuckGo', 'Wikipedia', 'GDELT', 'GoogleNews', 'TrustedSiteSearch', 'GoogleFactCheck'];
     const sources = [];
 
     results.forEach((result, index) => {
-      const apiNames = ['DuckDuckGo', 'Wikipedia', 'GDELT'];
       if (result.status === 'fulfilled' && result.value) {
         const items = Array.isArray(result.value) ? result.value : [result.value];
-        sources.push(...items);
+        const validItems = items.filter(s => s && s.title);
+        sources.push(...validItems);
+        logger.info(`${apiNames[index]}: ${validItems.length} results collected`);
       } else if (result.status === 'rejected') {
         logger.warn(`${apiNames[index]} API failed: ${result.reason?.message || 'Unknown error'}`);
+      } else {
+        logger.info(`${apiNames[index]}: 0 results (empty response)`);
       }
     });
 
-    const filteredSources = sources.filter(s => s && s.title);
-
     const tierValue = { 'high': 3, 'medium': 2, 'low': 1 };
-    filteredSources.sort((a, b) => (tierValue[b.credibilityTier] || 0) - (tierValue[a.credibilityTier] || 0));
+    sources.sort((a, b) => (tierValue[b.credibilityTier] || 0) - (tierValue[a.credibilityTier] || 0));
 
-    const finalSources = filteredSources.slice(0, 3);
+    const seen = new Set();
+    const dedupedSources = sources.filter(s => {
+      const key = (s.url || s.title).toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    const finalSources = dedupedSources.slice(0, limit);
     const credibilityScore = this._calculateCredibilityScore(finalSources);
 
     const articles = finalSources.map(s => ({
@@ -45,13 +61,16 @@ class NewsService {
       description: s.description
     }));
 
+    logger.info(`Total aggregated: ${sources.length} raw, ${finalSources.length} final articles, credibility: ${credibilityScore}`);
+
     return {
-      sources: filteredSources,
+      sources: finalSources,
       credibilityScore,
       articles
     };
   }
 
+  // ───── Fetcher 1: DuckDuckGo Instant Answers ─────
   async _fetchDuckDuckGo(keywords) {
     try {
       const response = await axios.get('https://api.duckduckgo.com/', {
@@ -80,7 +99,7 @@ class NewsService {
       }
 
       if (data.RelatedTopics && data.RelatedTopics.length > 0) {
-        const topics = data.RelatedTopics.slice(0, 2);
+        const topics = data.RelatedTopics.slice(0, 3);
         topics.forEach(topic => {
           if (topic.Text && topic.FirstURL) {
             results.push({
@@ -96,7 +115,6 @@ class NewsService {
         });
       }
 
-      logger.info(`DuckDuckGo returned ${results.length} results`);
       return results;
     } catch (error) {
       logger.error(`DuckDuckGo API Error: ${error.response?.status || error.message}`);
@@ -104,16 +122,17 @@ class NewsService {
     }
   }
 
+  // ───── Fetcher 2: Wikipedia ─────
   async _fetchWikipedia(keywords) {
     try {
-      const searchTerms = keywords.split(' ').slice(0, 4).join(' ');
+      const searchTerms = keywords.split(' ').slice(0, 5).join(' ');
 
       const searchResponse = await axios.get('https://en.wikipedia.org/w/api.php', {
         params: {
           action: 'query',
           list: 'search',
           srsearch: searchTerms,
-          srlimit: 2,
+          srlimit: 3,
           format: 'json',
           origin: '*'
         },
@@ -126,23 +145,19 @@ class NewsService {
       const searchResults = searchResponse.data?.query?.search || [];
       if (searchResults.length === 0) return [];
 
-      const results = [];
-
-      for (const sr of searchResults.slice(0, 2)) {
-        try {
-          const summaryResponse = await axios.get(
-            `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(sr.title)}`,
-            {
-              headers: {
-                'User-Agent': 'SatyaBot/1.0 (https://github.com/satyabot; satyabot@example.com)'
-              },
-              timeout: this.timeout
-            }
-          );
-
-          const summary = summaryResponse.data;
+      const summaryPromises = searchResults.slice(0, 3).map(sr =>
+        axios.get(
+          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(sr.title)}`,
+          {
+            headers: {
+              'User-Agent': 'SatyaBot/1.0 (https://github.com/satyabot; satyabot@example.com)'
+            },
+            timeout: this.timeout
+          }
+        ).then(resp => {
+          const summary = resp.data;
           if (summary.extract) {
-            results.push({
+            return {
               title: summary.title,
               source: 'Wikipedia',
               url: summary.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(sr.title)}`,
@@ -150,14 +165,16 @@ class NewsService {
               publishedAt: summary.timestamp || new Date().toISOString(),
               credibilityTier: 'high',
               apiSource: 'wikipedia'
-            });
+            };
           }
-        } catch (e) {
-          logger.warn(`Wikipedia summary fetch failed for "${sr.title}": ${e.message}`);
-        }
-      }
+          return null;
+        }).catch(e => {
+          logger.warn(`Wikipedia summary failed for "${sr.title}": ${e.message}`);
+          return null;
+        })
+      );
 
-      logger.info(`Wikipedia returned ${results.length} results`);
+      const results = (await Promise.all(summaryPromises)).filter(Boolean);
       return results;
     } catch (error) {
       logger.error(`Wikipedia API Error: ${error.response?.status || error.message}`);
@@ -165,13 +182,14 @@ class NewsService {
     }
   }
 
+  // ───── Fetcher 3: GDELT ─────
   async _fetchGDELT(keywords) {
     try {
       const response = await axios.get(this.gdeltEndpoint, {
         params: {
           query: keywords,
           mode: 'ArtList',
-          maxrecords: 3,
+          maxrecords: 5,
           format: 'json',
           sort: 'DateDesc',
           timespan: '7d'
@@ -181,7 +199,7 @@ class NewsService {
 
       const articles = response.data?.articles || [];
 
-      const results = articles.slice(0, 3).map(article => ({
+      const results = articles.slice(0, 5).map(article => ({
         title: article.title || 'GDELT Article',
         source: article.domain || 'GDELT',
         url: article.url,
@@ -196,7 +214,6 @@ class NewsService {
         apiSource: 'gdelt'
       }));
 
-      logger.info(`GDELT returned ${results.length} results`);
       return results;
     } catch (error) {
       logger.error(`GDELT API Error: ${error.response?.status || error.message}`);
@@ -204,47 +221,185 @@ class NewsService {
     }
   }
 
-  async _fetchReddit(keywords) {
+  // ───── Fetcher 4: Google News API (NewsAPI.org) ─────
+  async _fetchGoogleNewsAPI(keywords) {
+    if (!this.newsApiKey) {
+      logger.warn('NEWS_API_KEY not set, skipping Google News fetch');
+      return [];
+    }
+
     try {
-      const response = await axios.get('https://www.reddit.com/search.json', {
+      const trustedDomains = [
+        'reuters.com', 'apnews.com', 'bbc.com', 'bbc.co.uk',
+        'thehindu.com', 'indianexpress.com', 'ndtv.com',
+        'aljazeera.com', 'theguardian.com', 'nytimes.com',
+        'hindustantimes.com', 'livemint.com', 'theprint.in',
+        'scroll.in', 'firstpost.com', 'news18.com',
+        'deccanherald.com', 'pti.org.in', 'france24.com',
+        'dw.com', 'washingtonpost.com'
+      ];
+      const domains = trustedDomains.join(',');
+
+      const response = await axios.get(this.googleNewsApi, {
         params: {
           q: keywords,
-          sort: 'relevance',
-          t: 'week',
-          limit: 3,
-          type: 'link'
-        },
-        headers: {
-          'User-Agent': 'SatyaBot/1.0 (Fact-Checking Bot)'
+          domains: domains,
+          sortBy: 'relevancy',
+          pageSize: 5,
+          language: 'en',
+          apiKey: this.newsApiKey
         },
         timeout: this.timeout
       });
 
-      const posts = response.data?.data?.children || [];
+      const articles = response.data?.articles || [];
 
-      const results = posts.slice(0, 3).map(post => {
-        const d = post.data;
+      const results = articles.slice(0, 5).map(article => {
+        const sourceDomain = this._extractDomain(article.url);
         return {
-          title: d.title || 'Reddit Post',
-          source: `Reddit r/${d.subreddit}`,
-          url: `https://reddit.com${d.permalink}`,
-          description: (d.selftext || d.title || '').substring(0, 250),
-          publishedAt: d.created_utc ? new Date(d.created_utc * 1000).toISOString() : new Date().toISOString(),
-          credibilityTier: this._getRedditTier(d),
-          apiSource: 'reddit',
-          upvotes: d.ups || 0,
-          commentCount: d.num_comments || 0
+          title: article.title || 'News Article',
+          source: article.source?.name || sourceDomain || 'NewsAPI',
+          url: article.url,
+          description: (article.description || article.title || '').substring(0, 300),
+          publishedAt: article.publishedAt || new Date().toISOString(),
+          credibilityTier: this._getDomainTier(sourceDomain),
+          apiSource: 'googlenews'
         };
       });
 
-      logger.info(`Reddit returned ${results.length} results`);
       return results;
     } catch (error) {
-      logger.error(`Reddit API Error: ${error.response?.status || error.message}`);
+      logger.error(`Google News API Error: ${error.response?.status || error.message}`);
       return [];
     }
   }
 
+  // ───── Fetcher 5: Trusted Site Search via DuckDuckGo ─────
+  async _fetchTrustedSiteSearch(keywords) {
+    const prioritySites = [
+      'reuters.com',
+      'apnews.com',
+      'bbc.com',
+      'thehindu.com',
+      'indianexpress.com',
+      'ndtv.com',
+      'pib.gov.in',
+      'aljazeera.com'
+    ];
+
+    const siteQuery = prioritySites.map(s => `site:${s}`).join(' OR ');
+    const fullQuery = `${keywords} ${siteQuery}`;
+
+    try {
+      const response = await axios.get('https://api.duckduckgo.com/', {
+        params: {
+          q: fullQuery,
+          format: 'json',
+          no_html: 1,
+          skip_disambig: 1
+        },
+        timeout: this.timeout
+      });
+
+      const data = response.data;
+      const results = [];
+
+      if (data.AbstractText && data.AbstractURL) {
+        results.push({
+          title: data.Heading || keywords,
+          source: this._extractDomain(data.AbstractURL) || 'Trusted Source',
+          url: data.AbstractURL,
+          description: data.AbstractText.substring(0, 300),
+          publishedAt: new Date().toISOString(),
+          credibilityTier: this._getDomainTier(this._extractDomain(data.AbstractURL)),
+          apiSource: 'trusted_search'
+        });
+      }
+
+      if (data.Results && data.Results.length > 0) {
+        data.Results.slice(0, 3).forEach(r => {
+          if (r.Text && r.FirstURL) {
+            const domain = this._extractDomain(r.FirstURL);
+            results.push({
+              title: r.Text.substring(0, 100),
+              source: domain || 'Trusted Source',
+              url: r.FirstURL,
+              description: r.Text.substring(0, 250),
+              publishedAt: new Date().toISOString(),
+              credibilityTier: this._getDomainTier(domain),
+              apiSource: 'trusted_search'
+            });
+          }
+        });
+      }
+
+      if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+        data.RelatedTopics.slice(0, 2).forEach(topic => {
+          if (topic.Text && topic.FirstURL) {
+            const domain = this._extractDomain(topic.FirstURL);
+            results.push({
+              title: topic.Text.substring(0, 100),
+              source: domain || 'DuckDuckGo Related',
+              url: topic.FirstURL,
+              description: topic.Text.substring(0, 250),
+              publishedAt: new Date().toISOString(),
+              credibilityTier: this._getDomainTier(domain),
+              apiSource: 'trusted_search'
+            });
+          }
+        });
+      }
+
+      return results;
+    } catch (error) {
+      logger.error(`Trusted Site Search Error: ${error.response?.status || error.message}`);
+      return [];
+    }
+  }
+
+  // ───── Fetcher 6: Google Fact Check Tools API ─────
+  async _fetchGoogleFactCheck(keywords) {
+    if (!this.googleFactCheckKey) {
+      logger.warn('No Google API key set, skipping Fact Check fetch');
+      return [];
+    }
+
+    try {
+      const response = await axios.get('https://factchecktools.googleapis.com/v1alpha1/claims:search', {
+        params: {
+          query: keywords,
+          key: this.googleFactCheckKey,
+          languageCode: 'en',
+          pageSize: 5
+        },
+        timeout: this.timeout
+      });
+
+      const claims = response.data?.claims || [];
+
+      const results = claims.slice(0, 5).map(claim => {
+        const review = claim.claimReview?.[0] || {};
+        const publisherDomain = this._extractDomain(review.url || '');
+        return {
+          title: claim.text || review.title || 'Fact Check',
+          source: review.publisher?.name || publisherDomain || 'Google Fact Check',
+          url: review.url || '',
+          description: `Rated: ${review.textualRating || 'N/A'}. ${(review.title || claim.text || '').substring(0, 250)}`,
+          publishedAt: review.reviewDate || new Date().toISOString(),
+          credibilityTier: 'high',
+          apiSource: 'google_factcheck',
+          factCheckRating: review.textualRating || null
+        };
+      });
+
+      return results;
+    } catch (error) {
+      logger.error(`Google Fact Check API Error: ${error.response?.status || error.message}`);
+      return [];
+    }
+  }
+
+  // ───── Credibility Scoring ─────
   _calculateCredibilityScore(sources) {
     if (!sources || sources.length === 0) return 0;
 
@@ -259,7 +414,6 @@ class NewsService {
     let totalWeight = 0;
     let maxPossibleWeight = 0;
 
-    const hasGDELT = sources.some(s => s.apiSource === 'gdelt');
     const sourceAPIs = new Set(sources.map(s => s.apiSource));
 
     sources.forEach(source => {
@@ -270,37 +424,61 @@ class NewsService {
 
     let score = Math.round((totalWeight / maxPossibleWeight) * 60);
 
-    if (hasGDELT) score += 10;
-    if (sourceAPIs.size >= 3) score += 10;
-    if (sourceAPIs.size >= 2) score += 5;
+    const hasGDELT = sources.some(s => s.apiSource === 'gdelt');
+    const hasGoogleNews = sources.some(s => s.apiSource === 'googlenews');
+    const hasTrustedSearch = sources.some(s => s.apiSource === 'trusted_search');
+    const hasGoogleFactCheck = sources.some(s => s.apiSource === 'google_factcheck');
+
+    if (hasGDELT) score += 8;
+    if (hasGoogleNews) score += 10;
+    if (hasTrustedSearch) score += 7;
+    if (hasGoogleFactCheck) score += 12;
+    if (sourceAPIs.size >= 4) score += 10;
+    else if (sourceAPIs.size >= 3) score += 7;
+    else if (sourceAPIs.size >= 2) score += 4;
 
     return Math.min(100, Math.max(0, score));
   }
 
+  // ───── Domain Tier Helpers ─────
   _getGDELTSourceTier(domain) {
     if (!domain) return 'low';
 
-    const highTier = ['reuters.com', 'apnews.com', 'bbc.com', 'bbc.co.uk', 'thehindu.com',
-      'indianexpress.com', 'ndtv.com', 'aljazeera.com', 'theguardian.com', 'nytimes.com',
-      'washingtonpost.com', 'pib.gov.in'];
-    const medTier = ['timesofindia.indiatimes.com', 'hindustantimes.com', 'news18.com',
-      'firstpost.com', 'theprint.in', 'scroll.in', 'livemint.com', 'economictimes.indiatimes.com'];
+    const highTier = [
+      'reuters.com', 'apnews.com', 'afp.com',
+      'bbc.com', 'bbc.co.uk', 'aljazeera.com', 'dw.com', 'france24.com',
+      'nytimes.com', 'washingtonpost.com', 'theguardian.com', 'wsj.com', 'economist.com',
+      'thehindu.com', 'indianexpress.com', 'ndtv.com', 'pib.gov.in',
+      'pti.org.in', 'ani.in', 'abc.net.au', 'nhk.or.jp',
+      'cnn.com', 'usatoday.com', 'ft.com'
+    ];
+    const medTier = [
+      'timesofindia.indiatimes.com', 'hindustantimes.com', 'news18.com',
+      'firstpost.com', 'theprint.in', 'scroll.in', 'livemint.com',
+      'economictimes.indiatimes.com', 'thewire.in', 'deccanherald.com',
+      'deccanchronicle.com', 'tribuneindia.com', 'telegraphindia.com',
+      'business-standard.com', 'outlookindia.com', 'moneycontrol.com'
+    ];
 
     if (highTier.some(t => domain.includes(t))) return 'high';
     if (medTier.some(t => domain.includes(t))) return 'medium';
     return 'low';
   }
 
-  _getRedditTier(postData) {
-    const trustedSubreddits = ['news', 'worldnews', 'science', 'india', 'askscience',
-      'neutralpolitics', 'geopolitics', 'explainlikeimfive'];
-
-    if (trustedSubreddits.includes(postData.subreddit?.toLowerCase())) {
-      return postData.ups > 100 ? 'medium' : 'low';
-    }
-    return 'low';
+  _getDomainTier(domain) {
+    if (!domain) return 'low';
+    return this._getGDELTSourceTier(domain);
   }
 
+  _extractDomain(url) {
+    try {
+      return new URL(url).hostname.replace('www.', '');
+    } catch {
+      return '';
+    }
+  }
+
+  // ───── Keyword Extraction ─────
   _extractSearchKeywords(claim) {
     const stopWords = new Set(['the', 'is', 'in', 'at', 'on', 'a', 'an', 'and', 'or', 'but',
       'of', 'to', 'for', 'it', 'has', 'have', 'had', 'was', 'were', 'be', 'been',
@@ -317,8 +495,6 @@ class NewsService {
   }
 
   isTrustedSource(url) {
-    const { TRUSTED_SOURCES } = require('../config/constants');
-
     try {
       const domain = new URL(url).hostname.replace('www.', '');
       return TRUSTED_SOURCES.some(trusted => domain.includes(trusted));

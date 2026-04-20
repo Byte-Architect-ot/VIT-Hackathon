@@ -1,7 +1,7 @@
 
 const API_CONFIG = {
   baseUrl: 'http://localhost:5000/api',
-  timeout: 15000
+  timeout: 30000
 };
 
 async function verifyText(text, options = {}) {

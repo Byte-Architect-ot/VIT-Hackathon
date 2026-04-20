@@ -41,41 +41,46 @@ Only return the extracted claim, nothing else.`;
   }
 
   async verifyClaim(userClaim, trustedContext) {
-    const systemPrompt = `You are the "SatyaBot Verification Engine," a rigorous fact-checking AI. You are objective, analytical, and your top priority is factual accuracy.
+    const systemPrompt = `You are "SatyaBot", an expert Fact-Checking AI designed for Indian citizens. Your job is to verify claims, debunk rumors, and provide clear, truthful explanations with high confidence.
 
-CRITICAL EVALUATION PROCESS - Follow these steps IN ORDER:
+STEP 1 - CLASSIFY THE CLAIM into exactly one of three categories:
 
-STEP 1 - COMMON KNOWLEDGE CHECK (HIGHEST PRIORITY):
-Before looking at any news context, evaluate the claim against well-established facts you know:
-- World leaders: You KNOW who the Prime Minister / President of each country is. For example, Narendra Modi is the PM of INDIA (not Italy, not any other country). Giorgia Meloni is the PM of Italy.
-- Geography: Capital cities, countries, continents, oceans.
-- Science: Laws of physics, biology, chemistry, mathematics.
-- History: Major historical events, dates, figures.
-- If the claim CONTRADICTS any established common knowledge fact, immediately mark it as FAKE with confidence_score 95-100. Do NOT let news context override common knowledge.
-- If the claim ALIGNS with established common knowledge, immediately mark it as TRUE with confidence_score 90-100.
+CATEGORY 1: "General Fact" - Established, universally accepted facts.
+Examples: political leaders and their roles, capitals of countries, scientific laws, historical events, geography.
+Key examples you MUST know with absolute certainty:
+- Narendra Modi is the Prime Minister of India (NOT of any other country).
+- Giorgia Meloni is the Prime Minister of Italy.
+- Delhi is the capital of India. Tokyo is the capital of Japan.
+- Water boils at 100 degrees Celsius at standard atmospheric pressure.
+- The Earth revolves around the Sun.
+- India got independence in 1947.
+Action: Use ONLY your pre-trained knowledge. Do NOT rely on TRUSTED_CONTEXT for these. Mark as TRUE (confidence 95-100) if correct, or FAKE (confidence 95-100) if incorrect. For sources, cite "Official Government Records", "General Encyclopedias", "Established Scientific Knowledge" etc.
 
-STEP 2 - NEWS CONTEXT CHECK (for recent events / news only):
-Only use TRUSTED_CONTEXT for claims about RECENT events, breaking news, or developing stories that are NOT covered by common knowledge.
-- If TRUSTED_CONTEXT confirms the claim about a recent event, mark as TRUE with confidence proportional to source reliability.
-- If TRUSTED_CONTEXT contradicts the claim, mark as FAKE.
-- If TRUSTED_CONTEXT is available but inconclusive, mark as UNVERIFIED.
+CATEGORY 2: "Dynamic News" - Recent events, breaking news, viral forwards, crisis updates, statistics that change.
+Examples: "Curfew declared in Pune", "Train derailed today", "Free rations announced", "Earthquake in Delhi".
+Action: Cross-reference strictly with TRUSTED_CONTEXT provided. Mark as TRUE if confirmed by credible sources, FAKE if contradicted, UNVERIFIED if no clear evidence. For sources, list the actual news source names and domains from TRUSTED_CONTEXT.
 
-STEP 3 - UNCERTAINTY (last resort):
-If the claim is not a common knowledge fact AND no news context is available or relevant, mark as UNVERIFIED with low confidence_score (10-40).
+CATEGORY 3: "Opinion" - Subjective views, political commentary, predictions, personal beliefs.
+Examples: "This policy is bad", "Team X will win", "Modi is the best PM ever".
+Action: Do NOT fact-check. Mark status as OPINION, confidence_score 0. Explain it is subjective and cannot be fact-checked.
 
-EXPLANATION RULES:
-- Provide a 3-5 sentence detailed explanation in English. Include your reasoning: what fact was checked, what contradicts or confirms it, and why you reached your verdict.
-- Provide the same detailed explanation translated into conversational Hindi.
-- Be authoritative and clear. Cite specific facts (e.g., "Narendra Modi serves as the Prime Minister of India, not Italy").
+CRITICAL RULES:
+- Do NOT output any emojis anywhere in your response.
+- For General Facts, you MUST be confident. NEVER mark well-known facts as UNVERIFIED. If "Narendra Modi is the Prime Minister of India" is the claim, that is TRUE with 98-100 confidence.
+- Provide explanation in 2-3 clear, concise sentences.
+- Provide the same explanation in conversational Hindi.
+- For sources: list domain names or reference types. For general facts, use authoritative reference types like "Official Government of India Records", "General Encyclopedias".
 
-Output Format: You must respond ONLY in strict JSON. Do not include markdown code blocks.
+Output ONLY strict JSON. No markdown code blocks. No extra text before or after the JSON.
 {
-  "status": "FAKE" | "TRUE" | "UNVERIFIED",
+  "classification": "General Fact" | "Dynamic News" | "Opinion",
+  "status": "TRUE" | "FAKE" | "UNVERIFIED" | "OPINION",
   "confidence_score": 0-100,
-  "core_claim_extracted": "A short summary of the claim",
-  "explanation_english": "3-5 sentence detailed explanation with reasoning.",
-  "explanation_hindi": "Same detailed explanation in conversational Hindi.",
-  "suggested_action": "Clear action advice, e.g., 'Do not forward this claim. It is factually incorrect.'"
+  "core_claim_extracted": "Short summary of the claim",
+  "explanation_english": "2-3 concise sentences explaining the verdict with clear reasoning.",
+  "explanation_hindi": "Same explanation in conversational Hindi.",
+  "suggested_action": "Clear action advice for the user.",
+  "sources": ["source1.com", "source2.com"]
 }`;
 
     const userPrompt = `USER_CLAIM: ${userClaim}
@@ -90,23 +95,38 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
         .replace(/```\n?|\n?```/g, '')
         .trim();
 
-            const parsed = JSON.parse(cleanedResponse);
+      const jsonMatch = cleanedResponse.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        cleanedResponse = jsonMatch[0];
+      }
+
+      const parsed = JSON.parse(cleanedResponse);
 
       if (!parsed.status || parsed.confidence_score === undefined || parsed.confidence_score === null) {
         throw new Error('Invalid LLM response structure');
       }
 
-            return parsed;
+      if (!parsed.classification) {
+        parsed.classification = 'Dynamic News';
+      }
+
+      if (!parsed.sources || !Array.isArray(parsed.sources)) {
+        parsed.sources = [];
+      }
+
+      return parsed;
     } catch (error) {
       logger.error('LLM Verification Error:', error.message);
 
       return {
+        classification: 'Dynamic News',
         status: 'UNVERIFIED',
         confidence_score: 0,
-        core_claim_extracted: userClaim.substring(0, 50),
+        core_claim_extracted: userClaim.substring(0, 80),
         explanation_english: 'Unable to verify at this time. Please check official sources.',
-        explanation_hindi: 'इस समय सत्यापित करने में असमर्थ। कृपया आधिकारिक स्रोतों की जांच करें।',
-        suggested_action: 'Wait and check official sources'
+        explanation_hindi: 'Is samay satyapit karne mein asamarth. Kripya adhikarik srotron ki jaanch karein.',
+        suggested_action: 'Wait and check official sources',
+        sources: []
       };
     }
   }
@@ -120,7 +140,7 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
       return this._callMock(systemPrompt, userPrompt);
     }
 
-        throw new Error(`Unsupported LLM provider: ${this.provider}`);
+    throw new Error(`Unsupported LLM provider: ${this.provider}`);
   }
 
   async _callGroq(systemPrompt, userPrompt, maxTokens) {
@@ -153,7 +173,7 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
   async _callOpenAI(systemPrompt, userPrompt, maxTokens) {
     const axios = require('axios');
 
-        try {
+    try {
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
         {
@@ -187,12 +207,12 @@ TRUSTED_CONTEXT: ${JSON.stringify(trustedContext, null, 2)}`;
     const lines = userPrompt.split('\n');
     const claimLine = lines.find(line => line.includes('USER_CLAIM:'));
 
-        if (claimLine) {
+    if (claimLine) {
       const claim = claimLine.replace('USER_CLAIM:', '').trim();
       return claim.substring(0, 80);
     }
 
-        return userPrompt.substring(0, 80);
+    return userPrompt.substring(0, 80);
   }
 }
 

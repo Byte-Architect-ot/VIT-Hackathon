@@ -4,6 +4,10 @@ const logger = require('../utils/logger');
 const axios = require('axios');
 
 class WebhookController {
+  constructor() {
+    this.userSourcesCache = new Map();
+  }
+
   async handleWhatsApp(req, res, next) {
     try {
       const {
@@ -21,6 +25,32 @@ class WebhookController {
       logger.info(`Media URL: ${MediaUrl0 || '[No media]'}`);
 
       let textToVerify = Body;
+      const lowerText = (Body || "").trim().toLowerCase();
+
+      // Handle 'sources' request
+      if (lowerText === 'sources') {
+        const sources = this.userSourcesCache.get(From);
+        if (sources && sources.length > 0) {
+          let srcMsg = `SOURCES (${sources.length} references):\n\n`;
+          sources.forEach((src, i) => {
+            const tier = (src.credibilityTier || 'unknown').charAt(0).toUpperCase() + (src.credibilityTier || 'unknown').slice(1);
+            const title = src.title || src.source || 'Source';
+            const domain = src.source || '';
+            srcMsg += `${i + 1}. [${tier}] ${title}`;
+            if (domain && domain !== title) {
+              srcMsg += ` (${domain})`;
+            }
+            srcMsg += `\n`;
+            if (src.url) {
+              srcMsg += `   ${src.url}\n`;
+            }
+            srcMsg += `\n`;
+          });
+          return this.sendTwiML(res, srcMsg.trim());
+        } else {
+          return this.sendTwiML(res, 'No sources available. Please send a claim to verify first.');
+        }
+      }
 
       const hasMedia = NumMedia && parseInt(NumMedia) > 0;
       const isImage = MediaContentType0 && MediaContentType0.startsWith('image/');
@@ -52,7 +82,7 @@ class WebhookController {
                 footer: 'For better results, send clearer images or type the text manually.'
               });
 
-              return res.status(200).send(warningMsg);
+              return this.sendTwiML(res, warningMsg);
             }
 
           } else {
@@ -64,7 +94,7 @@ class WebhookController {
               footer: 'SatyaBot - Fact Verification Service'
             });
 
-            return res.status(200).send(errorMsg);
+            return this.sendTwiML(res, errorMsg);
           }
 
         } catch (error) {
@@ -76,7 +106,7 @@ class WebhookController {
             footer: 'Error code: IMG_PROC_ERR'
           });
 
-          return res.status(200).send(errorMsg);
+          return this.sendTwiML(res, errorMsg);
         }
       }
 
@@ -87,7 +117,7 @@ class WebhookController {
           footer: 'Powered by verified fact-check databases'
         });
 
-        return res.status(200).send(helpMsg);
+        return this.sendTwiML(res, helpMsg);
       }
 
       logger.info('Proceeding to verification...');
@@ -109,13 +139,23 @@ class WebhookController {
         })
       };
 
-      await verificationController.verify(verificationRequest, mockRes, next);
+      await verificationController.verifyWithDataset(verificationRequest, mockRes, next);
+
+      if (verificationResult && verificationResult.sources && verificationResult.sources.length > 0) {
+        this.userSourcesCache.set(From, verificationResult.sources);
+      } else if (verificationResult && verificationResult.source === 'verified_dataset' && verificationResult.fact_check_link) {
+        this.userSourcesCache.set(From, [{
+          title: 'Verified Database Source',
+          url: verificationResult.fact_check_link,
+          credibilityTier: 'high'
+        }]);
+      }
 
       const responseMessage = this._formatWhatsAppResponse(verificationResult);
 
       logger.info('Sending WhatsApp response');
 
-      res.status(200).send(responseMessage);
+      this.sendTwiML(res, responseMessage);
 
     } catch (error) {
       logger.error('WhatsApp webhook error:', error);
@@ -126,7 +166,7 @@ class WebhookController {
         footer: 'We apologize for the inconvenience.'
       });
 
-      res.status(200).send(errorMsg);
+      this.sendTwiML(res, errorMsg);
     }
   }
 
@@ -187,70 +227,54 @@ class WebhookController {
       });
     }
 
-    const statusInfo = {
-      'FAKE': {
-        verdict: 'MISINFORMATION DETECTED',
-        icon: '',
-        severity: 'HIGH PRIORITY ALERT'
-      },
-      'TRUE': {
-        verdict: 'VERIFIED AS ACCURATE',
-        icon: '',
-        severity: 'CONFIRMED'
-      },
-      'UNVERIFIED': {
-        verdict: 'INSUFFICIENT EVIDENCE',
-        icon: '',
-        severity: 'REQUIRES CAUTION'
-      }
+    const statusLabels = {
+      'FAKE': 'MISINFORMATION DETECTED',
+      'TRUE': 'VERIFIED AS ACCURATE',
+      'UNVERIFIED': 'INSUFFICIENT EVIDENCE',
+      'OPINION': 'OPINION / SUBJECTIVE'
     };
 
-    const status = statusInfo[result.status] || statusInfo['UNVERIFIED'];
+    const verdict = statusLabels[result.status] || statusLabels['UNVERIFIED'];
 
-    let report = '';
+    let report = `VERDICT: ${verdict}\n`;
+    if (result.classification) {
+      report += `Category: ${result.classification}\n`;
+    }
+    report += `\n`;
 
-    report += `FACT-CHECK VERIFICATION REPORT\n`;
+    if (result.core_claim_extracted) {
+      report += `CLAIM: ${result.core_claim_extracted}\n\n`;
+    }
 
-    report += `VERDICT: ${status.icon} ${status.verdict}\n`;
-    report += `Classification: ${status.severity}\n`;
-    report += `Confidence Level: ${result.confidence_score}%\n\n`;
+    if (result.explanation_english) {
+      report += `FINDINGS: ${result.explanation_english}\n\n`;
+    }
 
-    report += `CLAIM ANALYZED:\n`;
-    report += `${result.core_claim_extracted}\n\n`;
+    if (result.explanation_hindi) {
+      report += `विवरण (Hindi): ${result.explanation_hindi}\n\n`;
+    }
 
-    report += `FINDINGS:\n`;
-    report += `${result.explanation_english}\n\n`;
+    if (result.suggested_action) {
+      report += `ACTION: ${result.suggested_action}\n\n`;
+    }
 
-
-    report += `RECOMMENDED ACTION:\n`;
-    report += `${result.suggested_action}\n\n`;
-
-    if (result.source === 'verified_dataset') {
-      report += `SOURCE:\n`;
-      report += `Verified through established fact-check database (Alt News, Boom Live, PIB Fact Check)\n\n`;
-    } else if (result.trustedContext && result.trustedContext.length > 0) {
-      report += `SOURCES CONSULTED:\n`;
-      result.trustedContext.slice(0, 2).forEach((source, index) => {
-        report += `${index + 1}. ${source.source}\n`;
-      });
-      report += `\n`;
+    const hasSources = (result.sources && result.sources.length > 0) || (result.source === 'verified_dataset' && result.fact_check_link);
+    if (hasSources) {
+      report += `Reply 'sources' to get fact-check references and links.\n\n`;
     }
 
     if (result.cached) {
-      report += `Database Reference: Previously verified claim\n`;
+        report += `Database: Previously verified claim\n`;
     } else {
-      report += `Real-time Analysis: Completed in ${(result.processingTime / 1000).toFixed(1)}s\n`;
+        const time = result.processingTime ? `${(result.processingTime / 1000).toFixed(1)}s` : 'N/A';
+        report += `Analysis Time: ${time}\n`;
     }
-
-    report += `SatyaBot Fact-Checking Service\n`;
-    report += `Powered by AI + Verified Databases\n`;
-    report += `Report ID: ${Date.now().toString(36)}\n`;
 
     if (result.status === 'FAKE') {
-      report += `\n IMPORTANT: Do not forward this message without this fact-check report. Spreading misinformation may have legal consequences.\n`;
+      report += `\nALERT: Do not forward this message. Spreading misinformation may have legal consequences under IT Act 2000.\n`;
     }
 
-    return report;
+    return report.trim();
   }
 
   _formatWhatsAppMessage({ title, body, footer }) {
@@ -335,7 +359,7 @@ class WebhookController {
         })
       };
 
-      await verificationController.verify(verificationRequest, mockRes, next);
+      await verificationController.verifyWithDataset(verificationRequest, mockRes, next);
 
       const responseMessage = this._formatTelegramResponse(verificationResult);
       await this.sendTelegramMessage(chatId, responseMessage);
@@ -353,43 +377,80 @@ class WebhookController {
       return '*Verification Unavailable*\n\nUnable to verify at this time. Please check official sources.';
     }
 
-    const statusInfo = {
-      'FAKE': { icon: '', label: 'MISINFORMATION' },
-      'TRUE': { icon: '', label: 'VERIFIED' },
-      'UNVERIFIED': { icon: '', label: 'UNCONFIRMED' }
+    const statusLabels = {
+      'FAKE': 'MISINFORMATION DETECTED',
+      'TRUE': 'VERIFIED AS ACCURATE',
+      'UNVERIFIED': 'INSUFFICIENT EVIDENCE',
+      'OPINION': 'OPINION / SUBJECTIVE'
     };
 
-    const status = statusInfo[result.status] || statusInfo['UNVERIFIED'];
+    const verdict = statusLabels[result.status] || statusLabels['UNVERIFIED'];
 
     let report = '';
 
     report += `━━━━━━━━━━━━━━━━━━━━━\n`;
-    report += `*FACT-CHECK REPORT*\n`;
+    report += `*SATYABOT FACT-CHECK REPORT*\n`;
     report += `━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-    report += `*Verdict:* ${status.icon} ${status.label}\n`;
-    report += `*Confidence:* ${result.confidence_score}%\n\n`;
+    report += `*Verdict:* ${verdict}\n`;
+    if (result.classification) {
+      report += `*Category:* ${result.classification}\n`;
+    }
+    report += `\n`;
 
-    report += `*Claim Analyzed:*\n`;
-    report += `${result.core_claim_extracted}\n\n`;
+    if (result.core_claim_extracted) {
+      report += `*Claim Analyzed:*\n`;
+      report += `${result.core_claim_extracted}\n\n`;
+    }
 
-    report += `*Findings:*\n`;
-    report += `${result.explanation_english}\n\n`;
+    if (result.explanation_english) {
+      report += `*Findings:*\n`;
+      report += `${result.explanation_english}\n\n`;
+    }
 
     if (result.explanation_hindi) {
-      report += `*विवरण:*\n`;
+      report += `*विवरण (Hindi):*\n`;
       report += `${result.explanation_hindi}\n\n`;
     }
 
-    report += `*Recommended Action:*\n`;
-    report += `${result.suggested_action}\n\n`;
+    if (result.suggested_action) {
+      report += `*Recommended Action:*\n`;
+      report += `${result.suggested_action}\n\n`;
+    }
 
-    if (result.source === 'verified_dataset') {
-      report += `*Source:* Verified fact-check database\n`;
+    if (result.source === 'verified_dataset' && result.fact_check_link) {
+      report += `*Verified Source:* ${result.fact_check_link}\n\n`;
+    }
+
+    const sources = result.sources || [];
+    if (sources.length > 0) {
+      report += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      report += `*Sources (${sources.length} references):*\n\n`;
+      sources.forEach((src, i) => {
+        const tier = (src.credibilityTier || 'unknown').charAt(0).toUpperCase() + (src.credibilityTier || 'unknown').slice(1);
+        const title = src.title || src.source || 'Source';
+        if (src.url) {
+          report += `${i + 1}. [${title}](${src.url}) — ${tier}\n`;
+        } else {
+          report += `${i + 1}. ${title} — ${tier}\n`;
+        }
+      });
+      report += `\n`;
     }
 
     report += `━━━━━━━━━━━━━━━━━━━━━\n`;
-    report += `_SatyaBot Verification Service_\n`;
+
+    if (result.cached) {
+      report += `_Database: Previously verified claim_\n`;
+    } else if (result.processingTime) {
+      report += `_Real-time Analysis: Completed in ${(result.processingTime / 1000).toFixed(1)}s_\n`;
+    }
+
+    if (result.status === 'FAKE') {
+      report += `\n*ALERT:* Do not forward this message. Spreading misinformation may have legal consequences.`;
+    }
+
+    report += `\n_SatyaBot Verification Service_\n`;
     report += `_Report: ${Date.now().toString(36)}_\n`;
 
     return report;
@@ -414,6 +475,62 @@ class WebhookController {
       text: text,
       parse_mode: 'Markdown'
     });
+  }
+
+  sendTwiML(res, message) {
+    const MAX_LEN = 1500;
+
+    if (message.length <= MAX_LEN) {
+      const twiml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+<Message>${this.escapeXml(message)}</Message>
+</Response>`;
+
+      res.set('Content-Type', 'text/xml');
+      return res.status(200).send(twiml);
+    }
+
+    // Split long messages into chunks at paragraph boundaries
+    const chunks = this._splitMessage(message, MAX_LEN);
+    let twiml = `<?xml version="1.0" encoding="UTF-8"?>\n<Response>`;
+    chunks.forEach(chunk => {
+      twiml += `\n<Message>${this.escapeXml(chunk)}</Message>`;
+    });
+    twiml += `\n</Response>`;
+
+    res.set('Content-Type', 'text/xml');
+    res.status(200).send(twiml);
+  }
+
+  _splitMessage(text, maxLen) {
+    const chunks = [];
+    let remaining = text;
+
+    while (remaining.length > maxLen) {
+      let splitAt = remaining.lastIndexOf('\n\n', maxLen);
+      if (splitAt <= 0 || splitAt < maxLen * 0.3) {
+        splitAt = remaining.lastIndexOf('\n', maxLen);
+      }
+      if (splitAt <= 0 || splitAt < maxLen * 0.3) {
+        splitAt = maxLen;
+      }
+      chunks.push(remaining.substring(0, splitAt).trim());
+      remaining = remaining.substring(splitAt).trim();
+    }
+    if (remaining.length > 0) {
+      chunks.push(remaining.trim());
+    }
+    return chunks;
+  }
+
+  escapeXml(str = '') {
+    return str.replace(/[<>&"']/g, (c) => ({
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;',
+      "'": '&apos;'
+    }[c]));
   }
 
   verifyWebhook(req, res) {

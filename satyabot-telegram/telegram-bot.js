@@ -6,7 +6,7 @@ const FormData = require('form-data');
 
 const BACKEND_API = process.env.BACKEND_API_URL || 'http://localhost:5000/api';
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8050;
 
 const app = express();
 
@@ -36,6 +36,10 @@ let stats = {
   lastMessage: null,
   averageProcessingTime: 0
 };
+
+// Cache to store sources temporarily for each user
+// Key: userId, Value: array of sources
+const userSourcesCache = new Map();
 
 const CREDIBILITY_LEVELS = {
   HIGH: 80,
@@ -83,62 +87,53 @@ function formatResponse(result, metadata = {}) {
     return 'Unable to verify at this time. Please check official government sources.';
   }
 
-  const statusEmoji = {
-    'FAKE': '',
-    'TRUE': '',
-    'UNVERIFIED': ''
+  const statusLabels = {
+    'FAKE': 'MISINFORMATION DETECTED',
+    'TRUE': 'VERIFIED AS ACCURATE',
+    'UNVERIFIED': 'INSUFFICIENT EVIDENCE',
+    'OPINION': 'OPINION / SUBJECTIVE'
   };
 
-  const emoji = statusEmoji[result.status] || '';
+  const verdict = statusLabels[result.status] || statusLabels['UNVERIFIED'];
 
-  const credibilityScore = calculateCredibilityScore(result, metadata);
-  const credibilityLevel = getCredibilityLevel(credibilityScore);
-
-  let report = '';
-
-  report += `${emoji} *VERDICT: ${result.status}*\n`;
-  report += `Credibility Score: ${credibilityScore}% (${credibilityLevel})\n\n`;
+  let report = `*Verdict:* ${verdict}\n`;
+  if (result.classification) {
+    report += `*Category:* ${result.classification}\n`;
+  }
+  report += `\n`;
 
   if (result.core_claim_extracted && result.core_claim_extracted.length > 0) {
     report += `*Claim:* ${result.core_claim_extracted}\n\n`;
   }
 
   if (result.explanation_english) {
-    report += `${result.explanation_english}\n\n`;
+    report += `*Findings:* ${result.explanation_english}\n\n`;
+  }
+
+  if (result.explanation_hindi) {
+    report += `*विवरण (Hindi):* ${result.explanation_hindi}\n\n`;
   }
 
   if (result.suggested_action) {
-    report += `*Recommended Action:* ${result.suggested_action}\n\n`;
+    report += `*Action:* ${result.suggested_action}\n\n`;
   }
 
-  if (result.source === 'verified_dataset' && result.fact_check_link) {
-    report += `*Source:* Verified fact-check database\n`;
-    report += `*Reference:* ${result.fact_check_link}\n\n`;
-  } else if (result.source === 'verified_dataset') {
-    report += `*Source:* Verified fact-check database (Alt News, Boom Live, PIB)\n\n`;
+  const hasSources = (result.sources && result.sources.length > 0) || (result.source === 'verified_dataset' && result.fact_check_link);
+  if (hasSources) {
+    report += `Reply 'sources' to get fact-check references and links.\n\n`;
   }
 
   if (result.cached) {
-    report += `_Note: Previously verified claim_\n`;
+    report += `_Database: Previously verified claim_\n`;
   } else if (result.processingTime) {
-    report += `_Verified in ${(result.processingTime / 1000).toFixed(1)}s_\n`;
+    report += `_Analysis Time: ${(result.processingTime / 1000).toFixed(1)}s_\n`;
   }
 
-  if (metadata.ocrConfidence !== null && metadata.ocrConfidence !== undefined) {
-    report += `_OCR Confidence: ${metadata.ocrConfidence.toFixed(0)}%`;
-    if (metadata.ocrConfidence < 70) {
-      report += ` (Low - results may vary)`;
-    }
-    report += `_\n`;
+  if (result.status === 'FAKE') {
+    report += `\n*ALERT:* Do not forward this message. Spreading misinformation may have legal consequences.`;
   }
 
-  if (result.status === 'FAKE' && credibilityScore >= CREDIBILITY_LEVELS.MEDIUM) {
-    report += `\n *WARNING:* This appears to be misinformation. Do not forward without verification.`;
-  }
-
-  report += `\n\n- SatyaBot Verification Service`;
-
-  return report;
+  return report.trim();
 }
 
 async function verifyText(text, userId) {
@@ -289,6 +284,26 @@ bot.on('message', async (msg) => {
     return bot.sendMessage(chatId, welcomeMessage, { parse_mode: 'Markdown' });
   }
 
+  // Handle 'sources' request
+  if (messageText && messageText.toLowerCase().trim() === 'sources') {
+    const sources = userSourcesCache.get(userId);
+    if (sources && sources.length > 0) {
+      let srcMsg = `*Sources (${sources.length} references):*\n\n`;
+      sources.forEach((src, i) => {
+        const tier = (src.credibilityTier || 'unknown').charAt(0).toUpperCase() + (src.credibilityTier || 'unknown').slice(1);
+        const title = src.title || src.source || 'Source';
+        if (src.url) {
+          srcMsg += `${i + 1}. [${title}](${src.url}) — ${tier}\n\n`;
+        } else {
+          srcMsg += `${i + 1}. ${title} — ${tier}\n\n`;
+        }
+      });
+      return bot.sendMessage(chatId, srcMsg.trim(), { parse_mode: 'Markdown', disable_web_page_preview: true });
+    } else {
+      return bot.sendMessage(chatId, 'No sources available. Please send a claim to verify first.');
+    }
+  }
+
   if (messageText === '/stats') {
     const statsMessage = 
       `*SatyaBot Statistics*\n\n` +
@@ -342,6 +357,17 @@ bot.on('message', async (msg) => {
 
     if (!result || !result.status) {
       throw new Error('Invalid verification result from backend');
+    }
+
+    // Store sources in cache
+    if (result && result.sources && result.sources.length > 0) {
+      userSourcesCache.set(userId, result.sources);
+    } else if (result && result.source === 'verified_dataset' && result.fact_check_link) {
+      userSourcesCache.set(userId, [{
+        title: 'Verified Database Source',
+        url: result.fact_check_link,
+        credibilityTier: 'high'
+      }]);
     }
 
     const processingTime = Date.now() - startTime;

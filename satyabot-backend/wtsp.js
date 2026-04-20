@@ -20,6 +20,10 @@ let stats = {
     lastRequest: null
 };
 
+// Cache to store sources temporarily for each user
+// Key: phone number, Value: array of sources
+const userSourcesCache = new Map();
+
 const GREETINGS = ['hi', 'hello', 'help', 'namaste', 'namaskar', 'hey', 'start'];
 
 
@@ -77,6 +81,31 @@ app.post('/webhook', async (req, res) => {
     if (!userText && numMedia === 0) {
         const helpMsg = formatHelpMessage();
         return sendTwiML(res, helpMsg);
+    }
+
+    // Handle 'sources' request
+    if (numMedia === 0 && lowerText === 'sources') {
+        const sources = userSourcesCache.get(from);
+        if (sources && sources.length > 0) {
+            let srcMsg = `SOURCES (${sources.length} references):\n\n`;
+            sources.forEach((src, i) => {
+                const tier = (src.credibilityTier || 'unknown').charAt(0).toUpperCase() + (src.credibilityTier || 'unknown').slice(1);
+                const title = src.title || src.source || 'Source';
+                const domain = src.source || '';
+                srcMsg += `${i + 1}. [${tier}] ${title}`;
+                if (domain && domain !== title) {
+                    srcMsg += ` (${domain})`;
+                }
+                srcMsg += `\n`;
+                if (src.url) {
+                    srcMsg += `   ${src.url}\n`;
+                }
+                srcMsg += `\n`;
+            });
+            return sendTwiML(res, srcMsg.trim());
+        } else {
+            return sendTwiML(res, 'No sources available. Please send a claim to verify first.');
+        }
     }
 
     try {
@@ -164,7 +193,18 @@ app.post('/webhook', async (req, res) => {
         const processingTime = Date.now() - startTime;
         console.log(`Verification completed in ${processingTime}ms`);
 
-        const responseMsg = formatProfessionalResponse(verificationResult, processingNote);
+        // Store sources in cache
+        if (verificationResult && verificationResult.sources && verificationResult.sources.length > 0) {
+            userSourcesCache.set(from, verificationResult.sources);
+        } else if (verificationResult && verificationResult.source === 'verified_dataset' && verificationResult.fact_check_link) {
+            userSourcesCache.set(from, [{
+                title: 'Verified Database Source',
+                url: verificationResult.fact_check_link,
+                credibilityTier: 'high'
+            }]);
+        }
+
+        const responseMsg = formatProfessionalResponse(verificationResult, processingNote, from);
         sendTwiML(res, responseMsg);
 
     } catch (err) {
@@ -267,7 +307,7 @@ async function verifyWithBackend(text, userId) {
 
 
 
-function formatProfessionalResponse(result, additionalNote = '') {
+function formatProfessionalResponse(result, additionalNote = '', from = null) {
     if (!result) {
         return formatGenericMessage(
             'Verification Service',
@@ -276,80 +316,58 @@ function formatProfessionalResponse(result, additionalNote = '') {
         );
     }
 
-    const statusInfo = {
-        'FAKE': {
-            verdict: 'MISINFORMATION DETECTED',
-            icon: '',
-            severity: 'HIGH PRIORITY ALERT',
-            action: 'DO NOT FORWARD'
-        },
-        'TRUE': {
-            verdict: 'VERIFIED AS ACCURATE',
-            icon: '',
-            severity: 'CONFIRMED INFORMATION',
-            action: 'VERIFIED'
-        },
-        'UNVERIFIED': {
-            verdict: 'INSUFFICIENT EVIDENCE',
-            icon: '',
-            severity: 'REQUIRES VERIFICATION',
-            action: 'EXERCISE CAUTION'
-        }
+    const statusLabels = {
+        'FAKE': 'MISINFORMATION DETECTED',
+        'TRUE': 'VERIFIED AS ACCURATE',
+        'UNVERIFIED': 'INSUFFICIENT EVIDENCE',
+        'OPINION': 'OPINION / SUBJECTIVE'
     };
 
-    const status = statusInfo[result.status] || statusInfo['UNVERIFIED'];
+    const verdict = statusLabels[result.status] || statusLabels['UNVERIFIED'];
 
-    let report = '';
+    let report = `VERDICT: ${verdict}\n`;
+    if (result.classification) {
+        report += `Category: ${result.classification}\n`;
+    }
+    report += `\n`;
 
-
-    report += `FACT-CHECK VERIFICATION REPORT\n`;
-
-    report += `VERDICT: ${status.icon} ${status.verdict}\n`;
-    report += `Classification: ${status.severity}\n`;
-    report += `Confidence Level: ${result.confidence_score}%\n\n`;
-
-
-    report += `CLAIM ANALYZED:\n`;
-    report += `${result.core_claim_extracted}\n\n`;
-
-    report += `FINDINGS:\n`;
-    report += `${result.explanation_english}\n\n`;
-
-
-
-    report += `RECOMMENDED ACTION:\n`;
-    report += `${result.suggested_action}\n\n`;
-
-    if (result.source === 'verified_dataset') {
-        report += `SOURCE:\n`;
-        report += `Verified fact-check database\n`;
-        report += `(Alt News, Boom Live, PIB)\n\n`;
-    } else if (result.fact_check_link) {
-        report += `REFERENCE:\n`;
-        report += `${result.fact_check_link}\n\n`;
+    if (result.core_claim_extracted) {
+        report += `CLAIM: ${result.core_claim_extracted}\n\n`;
     }
 
+    if (result.explanation_english) {
+        report += `FINDINGS: ${result.explanation_english}\n\n`;
+    }
+
+    if (result.explanation_hindi) {
+        report += `विवरण (Hindi): ${result.explanation_hindi}\n\n`;
+    }
+
+    if (result.suggested_action) {
+        report += `ACTION: ${result.suggested_action}\n\n`;
+    }
+
+    const hasSources = (result.sources && result.sources.length > 0) || (result.source === 'verified_dataset' && result.fact_check_link);
+    if (hasSources) {
+        report += `Reply 'sources' to get fact-check references and links.\n\n`;
+    }
 
     if (result.cached) {
-        report += `Database: Previously verified\n`;
+        report += `Database: Previously verified claim\n`;
     } else {
         const time = result.processingTime ? `${(result.processingTime / 1000).toFixed(1)}s` : 'N/A';
-        report += `Analysis: Real-time (${time})\n`;
+        report += `Analysis Time: ${time}\n`;
     }
 
     if (additionalNote) {
         report += additionalNote + '\n';
     }
 
-    report += `\nReport ID: ${Date.now().toString(36).toUpperCase()}\n`;
-    report += `SatyaBot Verification Service\n`;
-
-
     if (result.status === 'FAKE') {
-        report += `\n ALERT: Spreading misinformation may have legal consequences under IT Act 2000. Do not forward without verification.`;
+        report += `\nALERT: Do not forward this message. Spreading misinformation may have legal consequences under IT Act 2000.`;
     }
 
-    return report;
+    return report.trim();
 }
 
 function formatWelcomeMessage() {
@@ -446,13 +464,49 @@ function formatGenericMessage(title, body, footer) {
 
 
 function sendTwiML(res, message) {
-    const twiml = `<?xml version="1.0" encoding="UTF-8"?>
+    const MAX_LEN = 1500;
+
+    if (message.length <= MAX_LEN) {
+        const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
 <Message>${escapeXml(message)}</Message>
 </Response>`;
 
+        res.set("Content-Type", "text/xml");
+        return res.status(200).send(twiml);
+    }
+
+    // Split long messages into chunks at paragraph boundaries
+    const chunks = splitMessage(message, MAX_LEN);
+    let twiml = `<?xml version="1.0" encoding="UTF-8"?>\n<Response>`;
+    chunks.forEach(chunk => {
+        twiml += `\n<Message>${escapeXml(chunk)}</Message>`;
+    });
+    twiml += `\n</Response>`;
+
     res.set("Content-Type", "text/xml");
     res.status(200).send(twiml);
+}
+
+function splitMessage(text, maxLen) {
+    const chunks = [];
+    let remaining = text;
+
+    while (remaining.length > maxLen) {
+        let splitAt = remaining.lastIndexOf('\n\n', maxLen);
+        if (splitAt <= 0 || splitAt < maxLen * 0.3) {
+            splitAt = remaining.lastIndexOf('\n', maxLen);
+        }
+        if (splitAt <= 0 || splitAt < maxLen * 0.3) {
+            splitAt = maxLen;
+        }
+        chunks.push(remaining.substring(0, splitAt).trim());
+        remaining = remaining.substring(splitAt).trim();
+    }
+    if (remaining.length > 0) {
+        chunks.push(remaining.trim());
+    }
+    return chunks;
 }
 
 function escapeXml(str = "") {

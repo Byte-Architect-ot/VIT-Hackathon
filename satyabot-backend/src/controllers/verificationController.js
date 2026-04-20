@@ -31,14 +31,59 @@ class VerificationController {
 
             await datasetService.recordUsage(bestMatch._id);
 
-            return res.status(200).json({
+            // Run full LLM analysis pipeline for rich contextual response
+            const claimText = bestMatch.statementEnglish || bestMatch.statement || text;
+            let richExplanation = {};
+            let newsSources = [];
+            let newsCredibility = 0;
+
+            try {
+              const extractedClaim = await llmService.extractClaim(claimText);
+              logger.info(`Dataset match - extracted claim for enrichment: ${extractedClaim}`);
+
+              const trustedContext = await newsService.fetchRelatedNews(extractedClaim);
+              logger.info(`Dataset match - found ${trustedContext.articles.length} related articles`);
+
+              richExplanation = await llmService.verifyClaim(extractedClaim, trustedContext.articles);
+              newsSources = trustedContext.sources || [];
+              newsCredibility = trustedContext.credibilityScore || 0;
+            } catch (enrichError) {
+              logger.warn(`Dataset match enrichment failed, using fallback: ${enrichError.message}`);
+            }
+
+            // Build comprehensive sources list: dataset source first, then news sources
+            const datasetSources = [];
+      if (bestMatch.factCheckLink) {
+        datasetSources.push({
+          title: `Fact-check by ${bestMatch.factCheckSource || 'Verified Database'}`,
+          source: bestMatch.factCheckSource || 'Fact-Check Database',
+          url: bestMatch.factCheckLink,
+          credibilityTier: 'high',
+          apiSource: 'verified_dataset'
+        });
+      }
+
+            const combinedSources = [...datasetSources, ...newsSources];
+
+            // Use rich explanation from LLM if available, otherwise fallback
+            const explanationEn = richExplanation.explanation_english
+              || `This claim was fact-checked by ${bestMatch.factCheckSource}.`;
+            const explanationHi = richExplanation.explanation_hindi
+              || `यह दावा ${bestMatch.factCheckSource} द्वारा सत्यापित किया गया था।`;
+            const suggestedAction = richExplanation.suggested_action
+              || this._getSuggestedAction(bestMatch.label);
+            const classification = richExplanation.classification || 'Dynamic News';
+
+      return res.status(200).json({
         status: this._mapLabelToStatus(bestMatch.label),
         confidence_score: bestMatch.trustScore,
+        classification: classification,
         core_claim_extracted: bestMatch.statementEnglish || bestMatch.statement,
-        explanation_english: `This claim was fact-checked by ${bestMatch.factCheckSource}.`,
-        explanation_hindi: `यह दावा ${bestMatch.factCheckSource} द्वारा सत्यापित किया गया था।`,
-        suggested_action: this._getSuggestedAction(bestMatch.label),
+        explanation_english: explanationEn,
+        explanation_hindi: explanationHi,
+        suggested_action: suggestedAction,
         source: 'verified_dataset',
+        sources: combinedSources,
         fact_check_link: bestMatch.factCheckLink,
         processingTime: Date.now() - startTime
       });
@@ -106,6 +151,7 @@ _getSuggestedAction(label) {
 
         return res.status(200).json({
           ...cachedResult,
+          sources: cachedResult.sources || [],
           cached: true,
           processingTime: Date.now() - startTime
         });
@@ -118,13 +164,22 @@ _getSuggestedAction(label) {
 
                 await similarClaim.incrementQuery();
 
-                const result = {
+                const clusterSources = (similarClaim.trustedContext || []).map(ctx => ({
+          title: ctx.title || 'Related Article',
+          source: ctx.source || 'News Source',
+          url: ctx.url || '',
+          credibilityTier: ctx.credibilityTier || 'medium',
+          apiSource: ctx.apiSource || 'cluster_reference'
+        }));
+
+        const result = {
           status: similarClaim.status,
           confidence_score: similarClaim.confidenceScore,
           core_claim_extracted: similarClaim.extractedClaim,
           explanation_english: similarClaim.explanationEnglish,
           explanation_hindi: similarClaim.explanationHindi,
-          suggested_action: similarClaim.suggestedAction
+          suggested_action: similarClaim.suggestedAction,
+          sources: clusterSources
         };
 
                 await cacheService.set(claimHash, result);
@@ -172,7 +227,37 @@ _getSuggestedAction(label) {
         logger.error(`Failed to save claim ${claimHash}:`, dbError.message);
       }
 
-      await cacheService.set(claimHash, verificationResult);
+      const llmConfidence = verificationResult.confidence_score || 0;
+      const newsCredibility = trustedContext.credibilityScore || 0;
+      const classification = verificationResult.classification || 'Dynamic News';
+
+      let mergedConfidence;
+      if (classification === 'General Fact') {
+        mergedConfidence = llmConfidence;
+      } else if (classification === 'Opinion') {
+        mergedConfidence = 0;
+      } else {
+        mergedConfidence = Math.round(llmConfidence * 0.7 + newsCredibility * 0.3);
+      }
+
+      const llmSources = verificationResult.sources || [];
+      const newsSources = trustedContext.sources || [];
+      const combinedSources = newsSources.length > 0 ? newsSources : llmSources.map(s => ({
+        title: s,
+        source: s,
+        url: '',
+        credibilityTier: 'high',
+        apiSource: 'llm_reference'
+      }));
+
+      const finalResult = {
+        ...verificationResult,
+        confidence_score: mergedConfidence,
+        classification: classification,
+        sources: combinedSources,
+      };
+
+      await cacheService.set(claimHash, finalResult);
       await cacheService.incrementTrending(claimHash);
 
       await this._logVerification({
@@ -183,18 +268,12 @@ _getSuggestedAction(label) {
         cacheHit: false,
         llmCalls: 2, 
         newsApiCalls: trustedContext.sources.length,
-        result: verificationResult,
+        result: finalResult,
         userLocation: location
       });
 
-      const llmConfidence = verificationResult.confidence_score || 0;
-      const newsCredibility = trustedContext.credibilityScore || 0;
-      const mergedConfidence = Math.round(llmConfidence * 0.7 + newsCredibility * 0.3);
-
       return res.status(200).json({
-        ...verificationResult,
-        confidence_score: mergedConfidence,
-        sources: trustedContext.sources,
+        ...finalResult,
         cached: false,
         processingTime: Date.now() - startTime
       });

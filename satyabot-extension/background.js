@@ -23,7 +23,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       const data = await verifyText(selectedText, { userId: 'extension_context' });
       const status = data.status || "UNVERIFIED";
       const explanation = data.explanation_english || data.explanation || "No explanation provided.";
-      const score = data.credibility_score || 0;
+      const score = data.confidence_score || 0;
 
             let emoji = "";
       if (status === "TRUE") emoji = "";

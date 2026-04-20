@@ -7,12 +7,16 @@ class ClusterService {
 
             const keywords = this._extractKeywords(extractedClaim);
 
+            if (keywords.length === 0) return null;
+
+            // Require ALL keywords to match (AND logic), not just any one
+            const regexConditions = keywords.map(kw => ({
+              extractedClaim: { $regex: kw, $options: 'i' }
+            }));
+
             const similarClaims = await Claim.find({
-        extractedClaim: { 
-          $regex: keywords.join('|'), 
-          $options: 'i' 
-        }
-      })
+              $and: regexConditions
+            })
       .sort({ createdAt: -1 })
       .limit(1);
 

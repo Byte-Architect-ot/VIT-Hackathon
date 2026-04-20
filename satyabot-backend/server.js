@@ -40,6 +40,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/webhook', webhookRoutes);
+app.post('/webhook', require('./src/controllers/webhookController').handleWhatsApp.bind(require('./src/controllers/webhookController')));
 app.use('/api/verify', verificationRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/ocr', ocrRoutes);
