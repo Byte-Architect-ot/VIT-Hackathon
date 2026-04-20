@@ -6,13 +6,46 @@ SatyaBot is a comprehensive fact-checking platform for India, integrating advanc
 - `satyabot-backend/`: The Node.js/Express backend that handles API integrations, webhook requests, and AI verifications.
 - `satyabot-extension/`: The Chrome extension UI to quickly fetch and display verification results to the user.
 
-## Getting Started
+## Running the Project Locally
 
-1. Clone the repository.
-2. Navigate to `satyabot-backend/` and run `npm install`.
-3. Set up the `.env` file (see sample below).
-4. Run `npm run dev` to start the backend.
-5. Load the unpacked extension in Chrome from the `satyabot-extension/` folder.
+To fully run the system, you will need to run 4 distinct processes simultaneously. 
+
+### Prerequisites
+1. Clone the repository to your local machine.
+2. Navigate to the `satyabot-backend/` directory.
+3. Install dependencies by running `npm install`.
+4. Create a `.env` file in the `satyabot-backend/` directory (see Environment Variables section below).
+
+### Starting the Services (4 Simultaneous Processes)
+
+You will need to open four separate terminal windows and run the following commands, one in each terminal. Ensure you are in the `satyabot-backend/` directory for all Node.js commands.
+
+**Terminal 1: Main Backend Server**
+```bash
+npm run dev
+```
+
+**Terminal 2: WhatsApp Bot Webhook Server**
+```bash
+node backend-wtsp.js
+```
+
+**Terminal 3: Telegram Bot Server**
+```bash
+node telegram-bot.js
+```
+
+**Terminal 4: Ngrok Tunnel**
+You will need Ngrok to expose your local port (5000) to the internet so that webhooks from Telegram and Twilio (WhatsApp) can reach your local development environment.
+```bash
+ngrok http 5000
+```
+*Note: After starting Ngrok, remember to update the webhook URLs in your Twilio console and Telegram bot configuration to use the newly generated Ngrok HTTPS URL.*
+
+### Chrome Extension
+1. Open Google Chrome and navigate to `chrome://extensions/`.
+2. Enable "Developer mode" in the top right corner.
+3. Click "Load unpacked" and select the `satyabot-extension/` directory.
 
 ## Environment Variables
 
